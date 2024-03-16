@@ -6,6 +6,8 @@ import 'package:joel_s_application10/presentation/get_started_subscription_scree
 import 'package:joel_s_application10/presentation/get_started_subscription_screen/binding/get_started_subscription_binding.dart';
 import 'package:joel_s_application10/presentation/get_started_screen/get_started_screen.dart';
 import 'package:joel_s_application10/presentation/get_started_screen/binding/get_started_binding.dart';
+import 'package:joel_s_application10/presentation/register/registerLogin.dart';
+//import 'package:joel_s_application10/presentation/register/registerLogin.dart';
 import 'package:joel_s_application10/presentation/signup_page_screen/signup_page_screen.dart';
 import 'package:joel_s_application10/presentation/signup_page_screen/binding/signup_page_binding.dart';
 import 'package:joel_s_application10/presentation/login_page_screen/login_page_screen.dart';
@@ -33,6 +35,7 @@ import 'package:joel_s_application10/presentation/app_navigation_screen/binding/
 import 'package:get/get.dart';
 
 class AppRoutes {
+  static const String initial = '/';
   static const String loadingPageScreen = '/loading_page_screen';
 
   static const String getStartedIntroductionScreen =
@@ -75,6 +78,13 @@ class AppRoutes {
   static const String initialRoute = '/initialRoute';
 
   static List<GetPage> pages = [
+    //GetPage(
+    // name: '/',
+    //page: () => RegisterOtp(),
+    // bindings: [
+    //   LoadingPageBinding(),
+    // ],
+    // ),
     GetPage(
       name: loadingPageScreen,
       page: () => LoadingPageScreen(),
@@ -122,7 +132,7 @@ class AppRoutes {
       name: profilePageOneScreen,
       page: () => ProfilePageOneScreen(),
       bindings: [
-        ProfilePageOneBinding(),
+        //ProfilePageOneBinding(),
       ],
     ),
     GetPage(

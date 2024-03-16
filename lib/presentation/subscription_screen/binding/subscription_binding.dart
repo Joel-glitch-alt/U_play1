@@ -8,6 +8,6 @@ import 'package:get/get.dart';
 class SubscriptionBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => SubscriptionController());
+    // Get.lazyPut(() => SubscriptionController());
   }
 }

@@ -1,28 +1,82 @@
+// import 'package:json_annotation/json_annotation.dart';
+
+// part 'user_model.g.dart';
+
+// @JsonSerializable()
+// class UserModel {
+//   @JsonKey(name: 'firstname')
+//   String? firstname;
+
+//   @JsonKey(name: 'lastname')
+//   String? lastname;
+
+//   @JsonKey(name: 'username')
+//   String? username;
+
+//   @JsonKey(name: 'email')
+//   String? email;
+
+//   @JsonKey(name: 'password')
+//   String? password;
+
+//   @JsonKey(name: 'phonenumber')
+//   String? phonenumber;
+
+//   UserModel({
+//     this.firstname,
+//     this.lastname,
+//     this.username,
+//     this.email,
+//     this.password,
+//     this.phonenumber,
+//   });
+
+//   factory UserModel.fromJson(Map<String, dynamic> json) =>
+//       _$UserModelFromJson(json);
+
+//   Map<String, dynamic> toJson() => _$UserModelToJson(this);
+// }
+
 class UserModel {
-  final String phoneNumber;
-  final String name;
-  final String password;
+  String? firstname;
+  String? lastname;
+  String? username;
+  String? email;
+  String? password;
+  String? phone;
+  int? role;
 
   UserModel({
-    required this.phoneNumber,
-    required this.name,
-    required this.password,
+    this.firstname,
+    this.lastname,
+    this.username,
+    this.email,
+    this.password,
+    this.phone,
+    this.role,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      phoneNumber: json['phoneNumber'],
-      name: json['name'],
+      firstname: json['firstname'],
+      lastname: json['lastname'],
+      username: json['username'],
+      email: json['email'],
       password: json['password'],
+      phone: json['phone'],
+      role: json['role'],
     );
   }
 
-  // Convert UserModel to JSON
   Map<String, dynamic> toJson() {
     return {
-      'phoneNumber': phoneNumber,
-      'name': name,
+      'firstname': firstname,
+      'lastname': lastname,
+      'username': username,
+      'email': email,
       'password': password,
+      'phone': phone,
+      'role': role,
     };
   }
 }

@@ -13,23 +13,27 @@ class SubscriptionScreen extends GetWidget<SubscriptionController> {
 
   @override
   Widget build(BuildContext context) {
+    // return GetBuilder<SubscriptionController>(builder: (ctrl) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: appTheme.black9004c.withOpacity(0.03),
+        backgroundColor: Colors.red,
+
+        ///appTheme.blueGray100.withOpacity(0.03),
         body: Container(
           width: double.maxFinite,
-          padding: EdgeInsets.symmetric(horizontal: 20.h),
+          //padding: EdgeInsets.symmetric(horizontal: 20.h),
           child: _buildFrameFiftyFour(),
         ),
       ),
     );
+    // });
   }
 
   /// Section Widget
   Widget _buildFrameFiftyFour() {
     return Container(
       decoration: AppDecoration.fillGray.copyWith(
-        borderRadius: BorderRadiusStyle.roundedBorder10,
+        borderRadius: BorderRadiusStyle.roundedBorder5,
       ),
       child: Card(
         clipBehavior: Clip.antiAlias,
@@ -40,11 +44,11 @@ class SubscriptionScreen extends GetWidget<SubscriptionController> {
           borderRadius: BorderRadiusStyle.roundedBorder10,
         ),
         child: Container(
-          height: 412.v,
+          height: 500.v,
           width: 350.h,
           decoration: AppDecoration.fillErrorContainer.copyWith(
-            borderRadius: BorderRadiusStyle.roundedBorder10,
-          ),
+              //borderRadius: BorderRadiusStyle.roundedBorder10,
+              ),
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
@@ -53,17 +57,17 @@ class SubscriptionScreen extends GetWidget<SubscriptionController> {
                 child: Container(
                   decoration:
                       AppDecoration.gradientLightblueA700ToPrimary.copyWith(
-                    borderRadius: BorderRadiusStyle.roundedBorder10,
-                  ),
+                          // borderRadius: BorderRadiusStyle.roundedBorder10,
+                          ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(height: 6.v),
-                      CustomImageView(
-                        imagePath: ImageConstant.imgGroup2,
-                        height: 405.v,
-                        width: 350.h,
-                      ),
+                      //CustomImageView(
+                      // imagePath: ImageConstant.imgGroup2,
+                      // height: 405.v,
+                      // width: 350.h,
+                      // ),
                     ],
                   ),
                 ),
@@ -81,16 +85,16 @@ class SubscriptionScreen extends GetWidget<SubscriptionController> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(bottom: 3.v),
-                        child: Text(
-                          "lbl_12_25_am".tr,
-                          style: CustomTextStyles.bodySmallInterWhiteA700,
-                        ),
+                        // child: Text(
+                        //"lbl_12_25_am".tr,
+                        //style: CustomTextStyles.bodySmallInterWhiteA700,
+                        // ),
                       ),
-                      CustomImageView(
-                        imagePath: ImageConstant.imgSettings,
-                        height: 6.v,
-                        width: 52.h,
-                      ),
+                      // CustomImageView(
+                      //   imagePath: ImageConstant.imgSettings,
+                      //   height: 6.v,
+                      //   width: 52.h,
+                      // ),
                     ],
                   ),
                 ),

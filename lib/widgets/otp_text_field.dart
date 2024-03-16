@@ -4,12 +4,13 @@ import 'package:otp_text_field_v2/otp_field_v2.dart';
 class OtpTextField extends StatelessWidget {
   final OtpFieldControllerV2 otpController;
   final bool visible;
-  final Function(String?) onComplete;
+  // final Function(String?) onComplete;
+  //
   const OtpTextField({
     Key? key,
     required this.otpController,
     required this.visible,
-    required this.onComplete,
+    //  required this.onComplete,
   }) : super(key: key);
 
   @override
@@ -18,7 +19,7 @@ class OtpTextField extends StatelessWidget {
       visible: visible,
       child: OTPTextFieldV2(
         controller: otpController,
-        length: 4,
+        length: 5,
         width: MediaQuery.of(context).size.width,
         textFieldAlignment: MainAxisAlignment.spaceAround,
         fieldWidth: 45,
@@ -30,7 +31,7 @@ class OtpTextField extends StatelessWidget {
         },
         onCompleted: (pin) {
           // print("Completed: " + pin);
-          onComplete(pin);
+          // onComplete(pin);
         },
       ),
     );
