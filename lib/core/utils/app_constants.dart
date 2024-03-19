@@ -2,13 +2,18 @@ class AppConstants {
   static const String APP_NAME = "U Play";
   static const int APP_VERSION = 1;
   //
-  static const String BASE_URL = "http://localhost:8000/account/";
+
+  static const String BASE_URL = "http://10.0.2.2:8000/";
+
+  static const String USER_LOGIN = BASE_URL + "account/login/";
+
   // "http://127.0.0.1:8000/account/"
   static const String USER_REGISTER_URL = "http://10.0.2.2:8000/account/users/";
+
   //"http://127.0.0.1:8000/account/users/";
   //
-
   static const String SUBSTRICTION_URL = "http://10.0.2.2:8000/subscriptions/";
+
   //
   static const String REGION_URL1 = "http://10.0.2.2:8000/account/region/";
 

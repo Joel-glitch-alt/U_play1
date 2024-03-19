@@ -6,31 +6,34 @@ import 'package:joel_s_application10/data/apiClient/api_client.dart';
 import 'package:joel_s_application10/presentation/fanbase_screen/controller/fanbase_controller.dart';
 import 'package:joel_s_application10/presentation/fanbase_screen/fanbase_screen.dart';
 import 'package:joel_s_application10/presentation/fanbase_screen/repo/repo.dart';
+import 'package:joel_s_application10/presentation/get_started_screen/get_started_screen.dart';
+import 'package:joel_s_application10/presentation/login_page_screen/login_page_screen.dart';
 import 'package:joel_s_application10/presentation/profile_page_one_screen/controller/profile_page_one_controller.dart';
 import 'package:joel_s_application10/presentation/profile_page_one_screen/profile_page_one_screen.dart';
 import 'package:joel_s_application10/presentation/profile_page_one_screen/repo/repo.dart';
 import 'package:joel_s_application10/presentation/register/controller/register.dart';
 import 'package:joel_s_application10/presentation/register/registerLogin.dart';
 import 'package:joel_s_application10/presentation/register/repo/repo.dart';
-import 'core/utils/initial_bindings.dart' as dep;
-
+import 'package:joel_s_application10/presentation/voting_screen/voting_screen.dart';
+// import 'core/utils/initial_bindings.dart' as dep;
+import 'helper/dependencies.dart' as dep;
 import 'core/app_export.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //
-  Get.lazyPut(() => ApiClient(appBaseUrl: AppConstants.BASE_URL));
-  //Repo
-  Get.lazyPut(() => FanBaseRepo(apiClient: Get.find()));
-  Get.lazyPut(() => RegistereRepo(apiClient: Get.find()));
-  Get.lazyPut(() => ProfileRepo(apiClient: Get.find()));
+//   Get.lazyPut(() => ApiClient(appBaseUrl: AppConstants.BASE_URL));
+//   //Repo
+//   Get.lazyPut(() => FanBaseRepo(apiClient: Get.find()));
+//   Get.lazyPut(() => RegistereRepo(apiClient: Get.find()));
+//   Get.lazyPut(() => ProfileRepo(apiClient: Get.find()));
 
-//Controllers
-  Get.lazyPut(() => FanbaseController(fanBaseRepo: Get.find()));
-  Get.lazyPut(() => RegisterController(commonRepo: Get.find()));
-  Get.lazyPut(() => ProfilePageOneController(profileRepo: Get.find()));
+// //Controllers
+//   Get.lazyPut(() => FanbaseController(fanBaseRepo: Get.find()));
+//   Get.lazyPut(() => RegisterController(commonRepo: Get.find()));
+//   Get.lazyPut(() => ProfilePageOneController(profileRepo: Get.find()));
 
-  await dep.InitialBindings();
+  await dep.init();
   //
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -55,10 +58,12 @@ class MyApp extends StatelessWidget {
           fallbackLocale: Locale('en', 'US'),
           title: 'joel_s_application10',
           // initialBinding: InitialBindings(),
-          // initialRoute: AppRoutes.initial,
-          // //initialRoute,
-          // getPages: AppRoutes.pages,
-          home: FanbaseScreen()
+          initialRoute: AppRoutes.initial,
+          //initialRoute,
+          getPages: AppRoutes.pages,
+          home: VotingScreen()
+          //GetStartedScreen()
+          //FanbaseScreen()
 
           // RegisterOtp(
           //   productTypesList: [

@@ -2,12 +2,14 @@ import 'dart:convert';
 import 'package:joel_s_application10/core/app_export.dart';
 import 'package:joel_s_application10/core/utils/app_constants.dart';
 import 'package:joel_s_application10/data/repository/common_repos.dart';
+import 'package:joel_s_application10/data/repository/register.dart';
 import 'package:joel_s_application10/presentation/loading_page_screen/models/loading_page_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:joel_s_application10/presentation/register/repo/repo.dart';
 
 class RewardsController extends GetxController {
-  final CommonRepo commonRepo;
-  RewardsController({required this.commonRepo});
+  final RegistereRepo registereRepo;
+  RewardsController({required this.registereRepo});
 
   //
   var moneyZoneTypesList = <Map<String, dynamic>>[];

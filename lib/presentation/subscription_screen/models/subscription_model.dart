@@ -1,3 +1,17 @@
-/// This class defines the variables used in the [subscription_screen],
-/// and is typically used to hold data that is passed between different parts of the application.
-class SubscriptionModel {}
+import 'dart:convert';
+
+class SubscriptionModel {
+  final String subscription;
+
+  SubscriptionModel(this.subscription);
+
+  factory SubscriptionModel.fromJson(Map<String, dynamic> json) {
+    return SubscriptionModel(json['subscription'] ?? '');
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'subscription': subscription,
+    };
+  }
+}

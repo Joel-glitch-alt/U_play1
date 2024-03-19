@@ -1,13 +1,18 @@
+
 import 'dart:convert';
 import 'package:joel_s_application10/core/app_export.dart';
 import 'package:joel_s_application10/core/utils/app_constants.dart';
-import 'package:joel_s_application10/data/repository/common_repos.dart';
+import 'package:joel_s_application10/data/repository/register.dart';
+import 'package:joel_s_application10/data/repository/voting.dart';
 import 'package:joel_s_application10/presentation/loading_page_screen/models/loading_page_model.dart';
 import 'package:http/http.dart' as http;
 
 class VotingsController extends GetxController {
-  final CommonRepo commonRepo;
-  VotingsController({required this.commonRepo});
+  final VotingRepo votingRepo;
+  VotingsController({required this.votingRepo});
+
+  Rx<bool> vcash = false.obs;
+  Rx<bool> bfv = false.obs;
 
   //
   var voteTypesList = <Map<String, dynamic>>[];
@@ -15,11 +20,6 @@ class VotingsController extends GetxController {
   //
 
   Rx<LoadingPageModel> loadingPageModelObj = LoadingPageModel().obs;
-
-  //
-
-  //List<dynamic> _commonProductList = [];
-  //List<dynamic> get commonProductList => _commonProductList
 
   @override
   void onInit() {

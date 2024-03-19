@@ -1,11 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:otp_text_field_v2/otp_field_v2.dart';
+import 'package:joel_s_application10/controllers/register.dart';
+import 'package:joel_s_application10/presentation/login_page_screen/login_page_screen.dart';
+import 'package:joel_s_application10/routes/app_routes.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
 
-import 'package:joel_s_application10/presentation/login_page_screen/login_page_screen.dart';
-import 'package:joel_s_application10/presentation/register/controller/register.dart';
 import 'package:joel_s_application10/widgets/otp_text_field.dart';
 
 //
@@ -61,7 +61,7 @@ class RegisterOtp extends StatelessWidget {
                 ),
 
                 SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 TextField(
                   controller: ctrl.registerFirstName,
@@ -254,6 +254,7 @@ class RegisterOtp extends StatelessWidget {
                   child: Text(' Resend OTP'),
                   onPressed: () {
                     ctrl.sendPostRequest();
+                    //Get.toNamed(AppRoutes.loginPageScreen);
                     // if (ctrl.otpFieldShown) {
                     // } else {
                     //   // ctrl.sendOtp();
@@ -266,8 +267,11 @@ class RegisterOtp extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    print('Navigate to login screen');
-                    Get.to(LoginPageScreen());
+                    // print('Navigate to login screen');
+                    //Get.to(LoginPageScreen());
+
+                    // Get.toNamed(AppRoutes.loadingPageScreen);
+                    Get.toNamed(AppRoutes.loginPageScreen);
                   },
                   child: Text(
                     'Login',

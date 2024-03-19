@@ -2,12 +2,14 @@ import 'dart:convert';
 import 'package:joel_s_application10/core/app_export.dart';
 import 'package:joel_s_application10/core/utils/app_constants.dart';
 import 'package:joel_s_application10/data/repository/common_repos.dart';
+import 'package:joel_s_application10/data/repository/register.dart';
 import 'package:joel_s_application10/presentation/loading_page_screen/models/loading_page_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:joel_s_application10/presentation/register/repo/repo.dart';
 
 class ChargesController extends GetxController {
-  final CommonRepo commonRepo;
-  ChargesController({required this.commonRepo});
+  final RegistereRepo registereRepo;
+  ChargesController({required this.registereRepo});
 
   //
   var chargesTypesList = <Map<String, dynamic>>[];

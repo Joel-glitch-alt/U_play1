@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:joel_s_application10/presentation/loading_page_screen/loading_page_screen.dart';
 import 'package:joel_s_application10/presentation/loading_page_screen/binding/loading_page_binding.dart';
 import 'package:joel_s_application10/presentation/get_started_introduction_screen/get_started_introduction_screen.dart';
@@ -7,7 +8,6 @@ import 'package:joel_s_application10/presentation/get_started_subscription_scree
 import 'package:joel_s_application10/presentation/get_started_screen/get_started_screen.dart';
 import 'package:joel_s_application10/presentation/get_started_screen/binding/get_started_binding.dart';
 import 'package:joel_s_application10/presentation/register/registerLogin.dart';
-//import 'package:joel_s_application10/presentation/register/registerLogin.dart';
 import 'package:joel_s_application10/presentation/signup_page_screen/signup_page_screen.dart';
 import 'package:joel_s_application10/presentation/signup_page_screen/binding/signup_page_binding.dart';
 import 'package:joel_s_application10/presentation/login_page_screen/login_page_screen.dart';
@@ -78,132 +78,155 @@ class AppRoutes {
   static const String initialRoute = '/initialRoute';
 
   static List<GetPage> pages = [
-    //GetPage(
-    // name: '/',
-    //page: () => RegisterOtp(),
-    // bindings: [
-    //   LoadingPageBinding(),
-    // ],
-    // ),
+    GetPage(
+      name: '/',
+      page: () => RegisterOtp(
+        productTypesList: [
+          {"id": 1, "label": "Artiste"},
+          {"id": 2, "label": "Judge"},
+        ],
+        isChecked: true,
+        category: '',
+      ),
+      // bindings: [
+      //   LoadingPageBinding(),
+      // ],
+    ),
     GetPage(
       name: loadingPageScreen,
       page: () => LoadingPageScreen(),
-      bindings: [
-        LoadingPageBinding(),
-      ],
+      // bindings: [
+      //   LoadingPageBinding(),
+      // ],
     ),
     GetPage(
       name: getStartedIntroductionScreen,
       page: () => GetStartedIntroductionScreen(),
-      bindings: [
-        GetStartedIntroductionBinding(),
-      ],
-      //SubscriptionScreen
+      // bindings: [
+      // GetStartedIntroductionBinding(),
+      // ],
+      ///SubscriptionScreen
     ),
     GetPage(
       name: getStartedSubscriptionScreen,
       page: () => GetStartedSubscriptionScreen(),
-      bindings: [
-        GetStartedSubscriptionBinding(),
-      ],
+      // bindings: [
+      //   GetStartedSubscriptionBinding(),
+      // ],
     ),
     GetPage(
       name: getStartedScreen,
       page: () => GetStartedScreen(),
-      bindings: [
-        GetStartedBinding(),
-      ],
+      // bindings: [
+      //   GetStartedBinding(),
+      // ],
     ),
     GetPage(
       name: signupPageScreen,
       page: () => SignupPageScreen(),
-      bindings: [
-        SignupPageBinding(),
-      ],
+      // bindings: [
+      //   SignupPageBinding(),
+      // ],
     ),
     GetPage(
       name: loginPageScreen,
       page: () => LoginPageScreen(),
-      bindings: [
-        LoginPageBinding(),
-      ],
+      // bindings: [
+      //   LoginPageBinding(),
+      // ],
     ),
     GetPage(
       name: profilePageOneScreen,
       page: () => ProfilePageOneScreen(),
-      bindings: [
-        //ProfilePageOneBinding(),
-      ],
+      // bindings: [
+      //   //ProfilePageOneBinding(),
+      // ],
     ),
+    // GetPage(
+    //   name: subscriptionScreen,
+    //   page: () => SubscriptionScreen(),
+    //   // bindings: [
+    //   //   SubscriptionBinding(),
+    //   // ],
+    // ),
     GetPage(
       name: subscriptionScreen,
-      page: () => SubscriptionScreen(),
-      bindings: [
-        SubscriptionBinding(),
-      ],
+      page: () => SubscriptionScreen(
+        textEditingController:
+            TextEditingController(), // Provide a TextEditingController here
+        onTextChanged: (text) {
+          // Handle text changed event
+        },
+        onArtistsPressed: () {
+          // Handle artists button pressed event
+        },
+        onJudgePressed: () {
+          // Handle judge button pressed event
+        },
+      ),
     ),
     GetPage(
       name: votingScreen,
       page: () => VotingScreen(),
-      bindings: [
-        VotingBinding(),
-      ],
+      // bindings: [
+      //   VotingBinding(),
+      // ],
     ),
     GetPage(
       name: profilePageScreen,
       page: () => ProfilePageScreen(),
-      bindings: [
-        ProfilePageBinding(),
-      ],
+      // bindings: [
+      //   ProfilePageBinding(),
+      // ],
     ),
     GetPage(
       name: tabsScreen,
       page: () => TabsScreen(),
-      bindings: [
-        TabsBinding(),
-      ],
+      // bindings: [
+      //   TabsBinding(),
+      // ],
     ),
     GetPage(
       name: homeContainerScreen,
       page: () => HomeContainerScreen(),
-      bindings: [
-        HomeContainerBinding(),
-      ],
+      // bindings: [
+      //   HomeContainerBinding(),
+      // ],
     ),
     GetPage(
       name: fanbaseScreen,
       page: () => FanbaseScreen(),
-      bindings: [
-        FanbaseBinding(),
-      ],
+      // bindings: [
+      //   FanbaseBinding(),
+      // ],
     ),
     GetPage(
       name: giftScreen,
       page: () => GiftScreen(),
-      bindings: [
-        GiftBinding(),
-      ],
+      // bindings: [
+      //   GiftBinding(),
+      // ],
     ),
     GetPage(
       name: giftAvailableRewardsScreen,
       page: () => GiftAvailableRewardsScreen(),
-      bindings: [
-        GiftAvailableRewardsBinding(),
-      ],
+      // bindings: [
+      //   GiftAvailableRewardsBinding(),
+      // ],
     ),
     GetPage(
       name: appNavigationScreen,
       page: () => AppNavigationScreen(),
-      bindings: [
-        AppNavigationBinding(),
-      ],
+      // bindings: [
+      //   AppNavigationBinding(),
+      // ],
     ),
     GetPage(
       name: initialRoute,
       page: () => LoadingPageScreen(),
-      bindings: [
-        LoadingPageBinding(),
-      ],
+      // bindings: [
+      //   LoadingPageBinding(),
+      // ],
     )
   ];
 }

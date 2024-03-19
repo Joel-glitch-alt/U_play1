@@ -1,3 +1,5 @@
+import 'package:joel_s_application10/presentation/login_page_screen/login_page_screen.dart';
+
 import 'controller/get_started_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
@@ -79,8 +81,8 @@ class GetStartedScreen extends GetWidget<GetStartedController> {
                   Align(
                       alignment: Alignment.topCenter,
                       child: Container(
-                          height: 150.adaptSize,
                           width: 150.adaptSize,
+                          height: 150.adaptSize,
                           margin: EdgeInsets.only(top: 59.v),
                           padding: EdgeInsets.symmetric(
                               horizontal: 31.h, vertical: 10.v),
@@ -96,8 +98,8 @@ class GetStartedScreen extends GetWidget<GetStartedController> {
 
   /// Navigates to the loginPageScreen when the action is triggered.
   onTapGetStarted() {
-    Get.toNamed(
-      AppRoutes.loginPageScreen,
-    );
+    Get.to(LoginPageScreen()
+        //AppRoutes.loginPageScreen,
+        );
   }
 }

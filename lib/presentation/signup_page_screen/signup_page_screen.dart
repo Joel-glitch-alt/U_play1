@@ -1,3 +1,5 @@
+import 'package:joel_s_application10/controllers/sign_up_page.dart';
+
 import 'controller/signup_page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:joel_s_application10/core/app_export.dart';
