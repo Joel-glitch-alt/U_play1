@@ -6,13 +6,13 @@ import 'package:joel_s_application10/features/presentation/presentation/loading_
 import 'package:http/http.dart' as http;
 import 'package:joel_s_application10/features/presentation/presentation/register/repo/repo.dart';
 
-class VirtualCashBalanceController extends GetxController {
+class VotesController extends GetxController {
   final RegistereRepo registereRepo;
-  VirtualCashBalanceController({required this.registereRepo});
+  VotesController({required this.registereRepo});
 
   //
-  var virtualCashTypesList = <Map<String, dynamic>>[];
-  List<dynamic> VIRTUAL = [];
+  var votesTypesList = <Map<String, dynamic>>[];
+  List<dynamic> VOTING = [];
   //
 
   Rx<LoadingPageModel> loadingPageModelObj = LoadingPageModel().obs;
@@ -24,15 +24,15 @@ class VirtualCashBalanceController extends GetxController {
 
   @override
   void onInit() {
-    const String VIRTUALCASHBALANCE = AppConstants.VIRTUALCASHBALANCE;
+    const String VOTES = AppConstants.VOTES;
     print("[DEBUG] - Controller : ${this.runtimeType}");
-    getVirtualCashBalance(VIRTUALCASHBALANCE);
+    getVotes(VOTES);
 
     super.onInit();
   }
 
   //
-  Future<void> getVirtualCashBalance(String url) async {
+  Future<void> getVotes(String url) async {
     print(url);
     try {
       http.Response response = await http.get(Uri.parse(url));
@@ -42,7 +42,7 @@ class VirtualCashBalanceController extends GetxController {
         // Update the productTypesList with the fetched data
         update();
         print(parsedData);
-        virtualCashTypesList = List<Map<String, dynamic>>.from(parsedData
+        votesTypesList = List<Map<String, dynamic>>.from(parsedData
             .map((region) => {
                   "id": region['id'].toString(),
                   "name": region['name'].toString(),
