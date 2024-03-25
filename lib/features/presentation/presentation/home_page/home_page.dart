@@ -40,11 +40,23 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15.0),
                       color: theme.colorScheme.primary.withOpacity(0.65),
                     ),
-                    child: IconButton(
-                      icon: Icon(Icons.search),
-                      onPressed: () {
-                        //controller.textSearchCtrl();
-                        print("Search here");
+                    child: TextField(
+                      controller: controller.textSearchCtrl,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Search...',
+                        contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
+                        suffixIcon: IconButton(
+                          icon: Icon(Icons.search),
+                          onPressed: () {
+                            // Perform search action here
+                            print('Search clicked');
+                          },
+                        ),
+                      ),
+                      onSubmitted: (value) {
+                        // Perform search action here when user submits
+                        print('Search submitted: $value');
                       },
                     ),
                   ),
@@ -61,9 +73,11 @@ class HomePage extends StatelessWidget {
                     alignment: Alignment.center,
                     child: Column(mainAxisSize: MainAxisSize.min, children: [
                       SizedBox(
-                          height: 730.v,
-                          width: double.maxFinite,
-                          child: Stack(alignment: Alignment.center, children: [
+                        height: 730.v,
+                        width: double.maxFinite,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
                             Align(
                               alignment: Alignment.center,
                               child: Container(
@@ -83,66 +97,75 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             Align(
-                                alignment: Alignment.center,
-                                child: Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 25.h),
-                                    child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          _buildForm(),
-                                          SizedBox(height: 15.v),
-                                          Container(
-                                              margin: EdgeInsets.only(
-                                                  left: 9.h, right: 31.h),
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadiusStyle
-                                                          .roundedBorder10),
-                                              child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    Column(children: [
-                                                      Text("Artist".tr,
-                                                          style: theme.textTheme
-                                                              .titleSmall),
-                                                      Text("Name of Artiste".tr,
-                                                          style: CustomTextStyles
-                                                              .bodySmallWhiteA700_1)
-                                                    ]),
-                                                    Spacer(flex: 39),
-                                                    Column(children: [
-                                                      Text("Song title".tr,
-                                                          style: theme.textTheme
-                                                              .titleSmall),
-                                                      Text("Title of Song",
-                                                          style: CustomTextStyles
-                                                              .bodySmallWhiteA700_1)
-                                                    ]),
-                                                    Spacer(flex: 60),
-                                                    Column(children: [
-                                                      Text("Votes",
-                                                          style: theme.textTheme
-                                                              .titleSmall),
-                                                      Text("50,000",
-                                                          style: CustomTextStyles
-                                                              .bodySmallWhiteA700_1)
-                                                    ])
-                                                  ])),
-                                          SizedBox(height: 15.v),
-                                          Text("Fan Base Trending Videos",
-                                              style:
-                                                  theme.textTheme.titleSmall),
-                                          SizedBox(height: 1.v),
-                                          _buildHome(),
-                                          SizedBox(height: 15.v),
-                                          _buildForm2()
-                                        ])))
-                          ])),
-                      //   _buildAppBar(),
+                              alignment: Alignment.center,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 25.h),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    _buildForm(),
+                                    SizedBox(height: 15.v),
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          left: 9.h, right: 31.h),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadiusStyle
+                                              .roundedBorder10),
+                                      child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Column(children: [
+                                              Text("Artist",
+                                                  style: theme
+                                                      .textTheme.titleSmall),
+                                              Text("Name of Artiste",
+                                                  style: CustomTextStyles
+                                                      .bodySmallWhiteA700_1)
+                                            ]),
+                                            Spacer(flex: 39),
+                                            Column(children: [
+                                              Text("Song title",
+                                                  style: theme
+                                                      .textTheme.titleSmall),
+                                              Text("Title of Song",
+                                                  style: CustomTextStyles
+                                                      .bodySmallWhiteA700_1)
+                                            ]),
+                                            Spacer(flex: 60),
+                                            Column(
+                                              children: [
+                                                Text("Votes",
+                                                    style: theme
+                                                        .textTheme.titleSmall),
+                                                /* Text("50,000",
+                                                    style: CustomTextStyles
+                                                        .bodySmallWhiteA700_1)*/
+                                                Obx(
+                                                  () => Text(
+                                                    "${controller.totalVotes}",
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ]),
+                                    ),
+                                    SizedBox(height: 15.v),
+                                    Text("Fan Base Trending Videos",
+                                        style: theme.textTheme.titleSmall),
+                                    //Obx(() => Text("${controller.null}")),
+                                    SizedBox(height: 1.v),
+                                    _buildHome(),
+                                    SizedBox(height: 15.v),
+                                    _buildForm2()
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      //_buildAppBar(),
                       Spacer()
                     ])),
                 CustomImageView(
@@ -562,21 +585,21 @@ class HomePage extends StatelessWidget {
   }
 
   /// Section Widget
-  //PreferredSizeWidget _buildAppBar() {
-  //  return CustomAppBar(
-  //   title: AppbarTitleSearchview(
-  //     margin: EdgeInsets.only(left: 25.h),
-  //    hintText: "search",
-  // controller: controller.searchController),
-  // actions: [
-  //   AppbarTrailingIconbuttonOne(
-  //       imagePath: ImageConstant.imgUserAlt40x40,
-  //       margin: EdgeInsets.only(left: 15.h, right: 25.h),
-  //       onTap: () {
-  //         /// onTapUserAlt();
-  //       })
-  // ]);
-  //}
+  // PreferredSizeWidget _buildAppBar() {
+  //   return CustomAppBar(
+  //       title: AppbarTitleSearchview(
+  //           margin: EdgeInsets.only(left: 25.h),
+  //           hintText: "search",
+  //           controller: controller.textSearchCtrl),
+  //       actions: [
+  //         AppbarTrailingIconbuttonOne(
+  //             imagePath: ImageConstant.imgUserAlt40x40,
+  //             margin: EdgeInsets.only(left: 15.h, right: 25.h),
+  //             onTap: () {
+  //               /// onTapUserAlt();
+  //             })
+  //       ]);
+  // }
 
   /// Common widget
   Widget _buildFrameThirtyNine({required String artistName}) {

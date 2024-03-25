@@ -10,13 +10,35 @@ class HomeController extends GetxController {
   final HomeRepo homeRepo;
   var homeModelObj = HomeModel([]).obs;
   TextEditingController textSearchCtrl = TextEditingController();
+  //var totalVotes = 0.obs; // Observable variable to hold total votes
+  final RxInt totalVotes = 0.obs; // Observable variable to store total votes
+
   HomeController({required this.homeRepo});
 
   @override
-  void onClose() {
-    super.onClose();
+  void onInit() {
+    super.onInit();
   }
 
+  //Making a Post request
+  void postData() async {
+    try {
+      var dio = Dio();
+      var response = await dio.post(
+        AppConstants.TRENDING_VIDEOS,
+        data: {'input': textSearchCtrl.text},
+      );
+
+      // Handle the response
+      print('Response status: ${response.statusCode}');
+      print('Response data: ${response.data}');
+    } catch (e) {
+      // Handle error
+      print('Error: $e');
+    }
+  }
+
+  ///Making a get request
   void fetchData() async {
     try {
       final response = await Dio().get(AppConstants.FETCH_TOP_MEDIA);
@@ -40,6 +62,43 @@ class HomeController extends GetxController {
       }
     } catch (e) {
       // Handle error
+    }
+  }
+
+  //Getting Total Votes
+  void fetchVotes() async {
+    try {
+      final response = await Dio().get(AppConstants.VOTES);
+      if (response.statusCode == 200) {
+        int total = response.data['total_votes'];
+        totalVotes.value = total; // Update the observable variable
+      } else {
+        // Handle error
+      }
+    } catch (e) {
+      // Handle error
+    }
+  }
+
+  //Getting FanBase Videos....
+  void getFanBaseTrendingVideo() async {
+    try {
+      // Send a GET request to the trending video endpoint
+      final response = await Dio().get(AppConstants.TRENDING_VIDEOS);
+
+      // Check if the response status code is 200 (OK)
+      if (response.statusCode == 200) {
+        // Process the response data here
+        // For example, you can extract and parse the data
+        var responseData = response.data;
+        // Handle the responseData as needed
+      } else {
+        // Handle other status codes if necessary
+        print('Error: ${response.statusCode}');
+      }
+    } catch (e) {
+      // Handle Dio errors or exceptions
+      print('Error: $e');
     }
   }
 }
