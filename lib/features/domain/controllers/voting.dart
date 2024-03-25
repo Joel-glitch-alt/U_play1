@@ -1,4 +1,53 @@
 import 'dart:convert';
+
+import 'package:dio/dio.dart';
+import 'package:get/get.dart';
+import 'package:joel_s_application10/features/core/utils/app_constants.dart';
+import 'package:joel_s_application10/features/data/data/repository/voting.dart';
+import 'package:joel_s_application10/features/presentation/presentation/loading_page_screen/models/loading_page_model.dart';
+
+class VotingsController extends GetxController {
+  var vcash = false.obs;
+  var bfv = false.obs;
+  final VotingRepo votingRepo;
+
+  VotingsController({required this.votingRepo});
+
+  RxInt vcashVotes = 0.obs;
+  RxInt bfvVotes = 0.obs;
+  Rx<LoadingPageModel> loadingPageModelObj = LoadingPageModel().obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    const String VOTING = AppConstants.VOTINGS;
+    print("[DEBUG] - Controller : ${this.runtimeType}");
+
+    voteForVcash();
+  }
+
+  Future<void> voteForVcash() async {
+    try {
+      final dio = Dio();
+      final response = await dio.post(AppConstants.VOTINGS);
+
+      if (response.statusCode == 200) {
+        vcashVotes.value = jsonDecode(response.data)['vcashVotes'];
+      } else {
+        throw Exception('Failed to vote for Vcash');
+      }
+    } catch (error) {
+      print('Error voting for Vcash: $error');
+    }
+  }
+}
+
+
+
+
+/////////////
+/*
+import 'dart:convert';
 import 'package:joel_s_application10/features/core/app_export.dart';
 import 'package:joel_s_application10/features/core/utils/app_constants.dart';
 import 'package:joel_s_application10/features/data/data/repository/register.dart';
@@ -68,6 +117,7 @@ class VotingsController extends GetxController {
     }
   }
 }
+*/
 
 //
   // Future<void> getVoting() async {

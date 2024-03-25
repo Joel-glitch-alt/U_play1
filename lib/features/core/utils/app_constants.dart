@@ -27,8 +27,17 @@ class AppConstants {
 
   //
   static const String VOTINGS = "http://10.0.2.2:8000/votes/voting/";
-  //
-  static const String VOTES = "http://10.0.2.2:8000/votes/votes/";
+  //VOTES.............
+  static const String VOTES = BASE_URL + "votes/votes/";
+  static const String TOP_VOTERS = BASE_URL + "top-voters/";
+  static const String TOP_VOTED_ARTISTES = BASE_URL + "top-voted-artistes/";
+  static const String TOP_BFV_ARTISTES = BASE_URL + "fetch_top_bfv_artiste/";
+  static const String TOP_VOTERS_BY_WEEK = BASE_URL + "top-voters-by-week/";
+  static const String REGIONAL_TOP_VOTERS = BASE_URL + "regional-top-voters/";
+  static const String NATIONAL_TOP_VOTERS = BASE_URL + "national-top-voters/";
+  static const String REGIONAL_TOP_ARTISTE = BASE_URL + "regional-top-artiste/";
+  static const String TOP_ARTISTE_BY_REGION =
+      BASE_URL + "top-artistes-by-region/";
   //
   static const String MONEYZONE = "http://10.0.2.2:8000/rewards/moneyzone/";
   //
@@ -40,6 +49,21 @@ class AppConstants {
   static const String POINTS = "http://10.0.2.2:8000/rewards/points/";
   //
   static const String CHARGES = "http://10.0.2.2:8000/rewards/charges/";
+  //
+  //static const String MEDIA = "http://10.0.2.2:8000/media/media/";
+  static const String MEDIA = BASE_URL + "media/media/";
+  static const String TRENDING_VIDEOS = MEDIA + "fetch-trending_videos/";
+  static const String HIGHEST_MEDIA_VIEWS =
+      MEDIA + "fetch-highest-media-views/";
+  static const String HIGHEST_MEDIA_PLAYS =
+      MEDIA + "fetch-highest-media-plays/";
+  static const String BOOST_MEDIA = MEDIA + "boost_media/";
+  static const String FETCH_TOP_MEDIA = MEDIA + "fetch-top-media/";
+  static const String FETCH_TOP_VIEWS = MEDIA + "fetch-top-viewers/";
+  static const String FETCH_TOP_PLAYS = MEDIA + "fetch-top-plays/";
+
+  //
+  // static const String HOME = "http://10.0.2.2:8000/rewards/home/";
   //
 
 //http://127.0.0.1:8000/rewards/charges/

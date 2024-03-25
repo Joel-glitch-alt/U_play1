@@ -3,18 +3,32 @@ import '../../../../core/app_export.dart';
 /// This class is used in the [home_item_widget] screen.
 class HomeItemModel {
   HomeItemModel({
-    this.retroMicrophon,
-    this.overflowMenu,
-    this.id,
+    String? retroMicrophon,
+    String? overflowMenu,
+    String? id,
   }) {
-    retroMicrophon = retroMicrophon ?? Rx(ImageConstant.imgRetroMicrophon);
-    overflowMenu = overflowMenu ?? Rx(ImageConstant.imgOverflowMenu);
-    id = id ?? Rx("");
+    this.retroMicrophon = retroMicrophon != null
+        ? Rx<String>(retroMicrophon)
+        : Rx<String>(ImageConstant.imgRetroMicrophon);
+    this.overflowMenu = overflowMenu != null
+        ? Rx<String>(overflowMenu)
+        : Rx<String>(ImageConstant.imgOverflowMenu);
+    this.id = id != null ? Rx<String>(id) : Rx<String>("");
   }
 
-  Rx<String>? retroMicrophon;
+  factory HomeItemModel.fromJson(Map<String, dynamic> json) {
+    return HomeItemModel(
+      retroMicrophon: json['retroMicrophon'] ?? '',
+      overflowMenu: json['overflowMenu'] ?? '',
+      id: json['id'] ?? '', // Assuming 'id' is a field in your JSON data
+    );
+  }
 
-  Rx<String>? overflowMenu;
+  Rx<String> retroMicrophon = Rx<String>(ImageConstant.imgRetroMicrophon);
+  Rx<String> overflowMenu = Rx<String>(ImageConstant.imgOverflowMenu);
+  Rx<String> id = Rx<String>("");
 
-  Rx<String>? id;
+  get title => null;
+
+  get artist => null;
 }

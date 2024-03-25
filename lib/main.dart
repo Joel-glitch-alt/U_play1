@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:joel_s_application10/features/presentation/presentation/collection_dialog/collection_dialog.dart';
 import 'package:joel_s_application10/features/presentation/presentation/gift_screen/gift_screen.dart';
+import 'package:joel_s_application10/features/presentation/presentation/home_page/home_page.dart';
+import 'package:joel_s_application10/features/presentation/presentation/login_page_screen/login_page_screen.dart';
 import 'package:joel_s_application10/features/presentation/presentation/tabs_screen/tabs_screen.dart';
 // import 'core/utils/initial_bindings.dart' as dep;
 import 'features/data/dependencies/dependencies.dart' as dep;
@@ -42,38 +44,40 @@ class MyApp extends StatelessWidget {
     //
     return Sizer(builder: (context, orientation, deviceType) {
       return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: theme,
-        translations: AppLocalization(),
-        locale: Get.deviceLocale, //for setting localization strings
-        fallbackLocale: Locale('en', 'US'),
-        title: 'joel_s_application10',
-        // initialBinding: InitialBindings(),
-        initialRoute: AppRoutes.initial,
-        //initialRoute,
-        getPages: AppRoutes.pages,
-        //home: TabsScreen()
-        //GiftScreen(),
-        //ProfilePageScreen()
-        //VotingScreen()
-        //GetStartedScreen()
-        //FanbaseScreen()
+          debugShowCheckedModeBanner: false,
+          theme: theme,
+          translations: AppLocalization(),
+          locale: Get.deviceLocale, //for setting localization strings
+          fallbackLocale: Locale('en', 'US'),
+          title: 'joel_s_application10',
+          // initialBinding: InitialBindings(),
+          initialRoute: AppRoutes.initial,
+          //initialRoute,
+          getPages: AppRoutes.pages,
+          home: HomePage()
+          //LoginPageScreen(),
+          // TabsScreen()
+          //GiftScreen(),
+          //ProfilePageScreen()
+          //VotingScreen()
+          //GetStartedScreen()
+          //FanbaseScreen()
 
-        // RegisterOtp(
-        //   productTypesList: [
-        //     {"id": 1, "label": "Artiste"},
-        //     {"id": 2, "label": "Judge"},
-        //   ],
-        //   isChecked: true,
-        //   category: '',
-        // ),
+          // RegisterOtp(
+          //   productTypesList: [
+          //     {"id": 1, "label": "Artiste"},
+          //     {"id": 2, "label": "Judge"},
+          //   ],
+          //   isChecked: true,
+          //   category: '',
+          // ),
 
-        //FanbaseScreen(),
-        //ProfilePageOneScreen(),
-        //RegisterOtp(),
-        //SubscriptionScreen(),
-        //Users
-      );
+          //FanbaseScreen(),
+          //ProfilePageOneScreen(),
+          //RegisterOtp(),
+          //SubscriptionScreen(),
+          //Users
+          );
 
       //
     });
