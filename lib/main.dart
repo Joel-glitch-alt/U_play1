@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:joel_s_application10/features/presentation/presentation/collection_dialog/collection_dialog.dart';
+import 'package:joel_s_application10/features/presentation/presentation/contestants_page/contestants_page.dart';
 import 'package:joel_s_application10/features/presentation/presentation/gift_screen/gift_screen.dart';
 import 'package:joel_s_application10/features/presentation/presentation/home_page/home_page.dart';
 import 'package:joel_s_application10/features/presentation/presentation/login_page_screen/login_page_screen.dart';
@@ -54,7 +55,8 @@ class MyApp extends StatelessWidget {
           initialRoute: AppRoutes.initial,
           //initialRoute,
           getPages: AppRoutes.pages,
-          home: HomePage()
+          home: ContestantsPage()
+          // HomePage()
           //LoginPageScreen(),
           // TabsScreen()
           //GiftScreen(),

@@ -12,6 +12,7 @@ class HomeController extends GetxController {
   TextEditingController textSearchCtrl = TextEditingController();
   //var totalVotes = 0.obs; // Observable variable to hold total votes
   final RxInt totalVotes = 0.obs; // Observable variable to store total votes
+  final RxInt fanBase = 0.obs;
 
   HomeController({required this.homeRepo});
 
@@ -86,11 +87,10 @@ class HomeController extends GetxController {
       // Send a GET request to the trending video endpoint
       final response = await Dio().get(AppConstants.TRENDING_VIDEOS);
 
-      // Check if the response status code is 200 (OK)
       if (response.statusCode == 200) {
-        // Process the response data here
         // For example, you can extract and parse the data
         var responseData = response.data;
+        fanBase.value = responseData;
         // Handle the responseData as needed
       } else {
         // Handle other status codes if necessary

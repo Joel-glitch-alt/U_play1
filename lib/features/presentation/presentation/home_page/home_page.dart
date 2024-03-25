@@ -153,7 +153,7 @@ class HomePage extends StatelessWidget {
                                     SizedBox(height: 15.v),
                                     Text("Fan Base Trending Videos",
                                         style: theme.textTheme.titleSmall),
-                                    //Obx(() => Text("${controller.null}")),
+                                    Obx(() => Text("${controller.fanBase}")),
                                     SizedBox(height: 1.v),
                                     _buildHome(),
                                     SizedBox(height: 15.v),
