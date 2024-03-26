@@ -1,5 +1,7 @@
 import 'package:http/http.dart';
+import 'package:joel_s_application10/features/data/data/repository/contestants.dart';
 import 'package:joel_s_application10/features/data/data/repository/home.dart';
+import 'package:joel_s_application10/features/domain/controllers/contestants.dart';
 import 'package:joel_s_application10/features/domain/controllers/gift_zone.dart';
 import 'package:joel_s_application10/features/domain/controllers/home.dart';
 import 'package:joel_s_application10/features/domain/controllers/money_zone.dart';
@@ -19,7 +21,6 @@ import 'package:joel_s_application10/features/data/data/repository/subscription.
 import 'package:joel_s_application10/features/data/data/repository/voting.dart';
 import 'package:joel_s_application10/features/presentation/presentation/fanbase_screen/controller/fanbase_controller.dart';
 import 'package:joel_s_application10/features/presentation/presentation/fanbase_screen/repo/repo.dart';
-import 'package:joel_s_application10/features/presentation/presentation/home_page/controller/home_controller.dart';
 import 'package:joel_s_application10/features/presentation/presentation/profile_page_one_screen/controller/profile_page_one_controller.dart';
 import 'package:joel_s_application10/features/presentation/presentation/profile_page_one_screen/repo/repo.dart';
 
@@ -41,6 +42,7 @@ Future<void> init() async {
   Get.lazyPut(() => GiftZoneRepo(apiClient: Get.find()));
   Get.lazyPut(() => MoneyZoneRepo(apiClient: Get.find()));
   Get.lazyPut(() => HomeRepo(apiClient: Get.find()));
+  Get.lazyPut(() => ContestantsRepo(apiClient: Get.find()));
   //Get.lazyPut(() => VotingRepo(apiClient: Get.find()));
   // Get.lazyPut(() => SignUpPageRepo(apiClient: Get.find()));
 
@@ -56,6 +58,8 @@ Future<void> init() async {
   Get.lazyPut(() => GiftZoneController(giftZoneRepo: Get.find()));
   Get.lazyPut(() => MoneyZoneController(moneyZoneRepo: Get.find()));
   Get.lazyPut(() => HomeController(homeRepo: Get.find()));
+  Get.lazyPut(() => ContestantsController(
+      contestantsRepo: Get.find(), endpoint: AppConstants.VOTES));
   //Get.lazyPut(() => SignUpPageRepo(registereRepo: Get.find()));
 }
 

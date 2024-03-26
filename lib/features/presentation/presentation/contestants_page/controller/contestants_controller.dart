@@ -1,21 +1,21 @@
-import 'package:joel_s_application10/features/core/app_export.dart';
-import 'package:joel_s_application10/features/presentation/presentation/contestants_page/models/contestants_model.dart';
-import 'package:flutter/material.dart';
+// import 'package:joel_s_application10/features/core/app_export.dart';
+// import 'package:joel_s_application10/features/presentation/presentation/contestants_page/models/contestants_model.dart';
+// import 'package:flutter/material.dart';
 
-/// A controller class for the ContestantsPage.
-///
-/// This class manages the state of the ContestantsPage, including the
-/// current contestantsModelObj
-class ContestantsController extends GetxController {
-  ContestantsController(this.contestantsModelObj);
+// /// A controller class for the ContestantsPage.
+// ///
+// /// This class manages the state of the ContestantsPage, including the
+// /// current contestantsModelObj
+// class ContestantsController extends GetxController {
+//   ContestantsController(this.contestantsModelObj);
 
-  TextEditingController searchController = TextEditingController();
+//   TextEditingController searchController = TextEditingController();
 
-  Rx<ContestantsModel> contestantsModelObj;
+//   Rx<ContestantsModel> contestantsModelObj;
 
-  @override
-  void onClose() {
-    super.onClose();
-    searchController.dispose();
-  }
-}
+//   @override
+//   void onClose() {
+//     super.onClose();
+//     searchController.dispose();
+//   }
+// }

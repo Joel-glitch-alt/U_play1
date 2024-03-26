@@ -1,3 +1,5 @@
+import 'package:joel_s_application10/features/domain/controllers/contestants.dart';
+
 import '../controller/contestants_controller.dart';
 import '../models/userprofile1_item_model.dart';
 import 'package:flutter/material.dart';
