@@ -1,6 +1,6 @@
 
 // import 'package:get/get.dart';
-// import 'package:joel_s_application10/controllers/login_controller.dart';
+// import 'package:joel_s_application10/features/domain/controllers/login_controller.dart';
 
 // /// A binding class for the LoginPageScreen.
 // ///

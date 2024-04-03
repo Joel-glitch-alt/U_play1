@@ -1,4 +1,6 @@
 import 'package:joel_s_application10/features/domain/controllers/login_controller.dart';
+import 'package:joel_s_application10/features/presentation/presentation/forget_Password/forget_password.dart';
+import 'package:joel_s_application10/features/presentation/presentation/profile_page_screen/profile_page_screen.dart';
 import 'package:joel_s_application10/features/presentation/presentation/register/registerLogin.dart';
 
 import 'controller/login_page_controller.dart';
@@ -14,6 +16,7 @@ class LoginPageScreen extends GetWidget<LoginController> {
   LoginPageScreen({Key? key}) : super(key: key);
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -43,118 +46,144 @@ class LoginPageScreen extends GetWidget<LoginController> {
                     width: double.maxFinite,
                     child: Stack(alignment: Alignment.topCenter, children: [
                       Align(
-                          alignment: Alignment.center,
-                          child: Container(
-                              decoration:
-                                  AppDecoration.gradientLightblueA700ToPrimary,
-                              child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    SizedBox(height: 55.v),
-                                    CustomImageView(
-                                        imagePath: ImageConstant.imgGroup2,
-                                        height: 753.v,
-                                        width: 390.h)
-                                  ]))),
+                        alignment: Alignment.center,
+                        child: Container(
+                          decoration:
+                              AppDecoration.gradientLightblueA700ToPrimary,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SizedBox(height: 55.v),
+                              CustomImageView(
+                                  imagePath: ImageConstant.imgGroup2,
+                                  height: 753.v,
+                                  width: 390.h)
+                            ],
+                          ),
+                        ),
+                      ),
                       Align(
-                          alignment: Alignment.topCenter,
-                          child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: 25.h, top: 28.v, right: 25.h),
-                              child: Column(
-                                  mainAxisSize: MainAxisSize.min,
+                        alignment: Alignment.topCenter,
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              left: 25.h, top: 28.v, right: 25.h),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text("Welcome BACK",
+                                  style:
+                                      CustomTextStyles.headlineMediumSemiBold),
+                              SizedBox(height: 11.v),
+                              Text("msg_please_log_in_and".tr,
+                                  style: CustomTextStyles.bodyMediumWhiteA700),
+                              SizedBox(height: 29.v),
+                              Text("LOG In",
+                                  style: theme.textTheme.titleMedium),
+                              SizedBox(height: 12.v),
+                              CustomTextFormField(
+                                  controller: ctrl.phoneController,
+                                  hintText: "Phone Number"),
+                              SizedBox(height: 15.v),
+                              CustomTextFormField(
+                                  controller: ctrl.passwordController,
+                                  hintText: "lbl_password".tr,
+                                  textInputAction: TextInputAction.done,
+                                  textInputType: TextInputType.visiblePassword,
+                                  validator: (value) {
+                                    if (value == null ||
+                                        (!isValidPassword(value,
+                                            isRequired: true))) {
+                                      return "please enter valid password";
+                                    }
+                                    return null;
+                                  },
+                                  obscureText: true),
+                              SizedBox(height: 16.v),
+                              SizedBox(height: 23.v),
+                              CustomElevatedButton(
+                                isLoading: ctrl.isLoading.value,
+                                text: "LOG IN",
+                                margin: EdgeInsets.symmetric(horizontal: 20.h),
+                                buttonStyle:
+                                    CustomButtonStyles.outlineLightBlueA,
+                                buttonTextStyle: theme.textTheme.titleMedium!,
+                                onPressed: () {
+                                  // Set isLoading to true when the button is pressed
+                                  //ctrl.setLoading(false);
+                                  // Call the login function from the controller
+                                  // ctrl.login().then(
+                                  //       (_) {},
+                                  //     );
+                                  // Future.delayed(Duration(seconds: 3), () {
+                                  //   ctrl.isLoading(true);
+                                  // });
+                                  ctrl.login(context);
+                                  //Get.to(ProfilePageScreen);
+                                  //onTapTxtProfilePage();
+
+                                  print('Log In');
+                                },
+                              ),
+                              SizedBox(height: 18.v),
+                              InkWell(
+                                onTap: () {
+                                  Get.to(ForgotPasswordScreen());
+                                },
+                                child: Text(
+                                  "forgot password",
+                                  style: theme.textTheme.bodyLarge!.copyWith(
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 19.v),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Row(
                                   children: [
-                                    Text("lbl_welcome_back".tr,
-                                        style: CustomTextStyles
-                                            .headlineMediumSemiBold),
-                                    SizedBox(height: 11.v),
-                                    Text("msg_please_log_in_and".tr,
-                                        style: CustomTextStyles
-                                            .bodyMediumWhiteA700),
-                                    SizedBox(height: 29.v),
-                                    Text("lbl_log_in".tr,
-                                        style: theme.textTheme.titleMedium),
-                                    SizedBox(height: 12.v),
-                                    CustomTextFormField(
-                                        controller: ctrl.phoneController,
-                                        hintText: "lbl_id".tr),
-                                    SizedBox(height: 15.v),
-                                    CustomTextFormField(
-                                        controller: ctrl.passwordController,
-                                        hintText: "lbl_password".tr,
-                                        textInputAction: TextInputAction.done,
-                                        textInputType:
-                                            TextInputType.visiblePassword,
-                                        validator: (value) {
-                                          if (value == null ||
-                                              (!isValidPassword(value,
-                                                  isRequired: true))) {
-                                            return "err_msg_please_enter_valid_password"
-                                                .tr;
-                                          }
-                                          return null;
-                                        },
-                                        obscureText: true),
-                                    SizedBox(height: 16.v),
-                                    SizedBox(height: 23.v),
-                                    CustomElevatedButton(
-                                        text: "lbl_log_in".tr,
-                                        margin: EdgeInsets.symmetric(
-                                            horizontal: 20.h),
-                                        buttonStyle: CustomButtonStyles
-                                            .outlineLightBlueA,
-                                        buttonTextStyle:
-                                            theme.textTheme.titleMedium!,
-                                        onPressed: () {
-                                          ctrl.login();
-                                        }),
-                                    SizedBox(height: 18.v),
-                                    Text("msg_forgot_password".tr,
-                                        style: theme.textTheme.bodyLarge!
-                                            .copyWith(
-                                                decoration:
-                                                    TextDecoration.underline)),
-                                    SizedBox(height: 19.v),
-                                    Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Row(children: [
-                                          Padding(
-                                              padding:
-                                                  EdgeInsets.only(bottom: 1.v),
-                                              child: Text(
-                                                  "msg_need_an_account".tr,
-                                                  style: theme
-                                                      .textTheme.bodyLarge)),
-                                          GestureDetector(
-                                              onTap: () {
-                                                onTapTxtSignUp();
-                                              },
-                                              child: Padding(
-                                                  padding: EdgeInsets.only(
-                                                      left: 5.h),
-                                                  child: Text("lbl_signup2".tr,
-                                                      style: CustomTextStyles
-                                                          .titleMediumPrimaryContainer)))
-                                        ])),
-                                    SizedBox(height: 20.v),
-                                    Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Row(children: [
-                                          Text("lbl_need_an_id".tr,
-                                              style: theme.textTheme.bodyLarge),
-                                          GestureDetector(
-                                              onTap: () {
-                                                onTapTxtSubscribe();
-                                              },
-                                              child: Padding(
-                                                  padding: EdgeInsets.only(
-                                                      left: 5.h),
-                                                  child: Text(
-                                                      "lbl_subscribe".tr,
-                                                      style: CustomTextStyles
-                                                          .titleMediumPrimaryContainer)))
-                                        ]))
-                                  ])))
+                                    Padding(
+                                        padding: EdgeInsets.only(bottom: 1.v),
+                                        child: Text("Need an Account?",
+                                            style: theme.textTheme.bodyLarge)),
+                                    GestureDetector(
+                                      onTap: () {
+                                        onTapTxtSignUp();
+                                      },
+                                      child: Padding(
+                                        padding: EdgeInsets.only(left: 5.h),
+                                        child: Text("lbl_signup2".tr,
+                                            style: CustomTextStyles
+                                                .titleMediumPrimaryContainer),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 20.v),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Row(
+                                  children: [
+                                    Text("Subscribe as Artiste or Voter?",
+                                        style: theme.textTheme.bodyLarge),
+                                    GestureDetector(
+                                      onTap: () {
+                                        onTapTxtSubscribe();
+                                      },
+                                      child: Padding(
+                                        padding: EdgeInsets.only(left: 5.h),
+                                        child: Text("lbl_subscribe".tr,
+                                            style: CustomTextStyles
+                                                .titleMediumPrimaryContainer),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      )
                     ]),
                   ),
                 ),
@@ -183,7 +212,7 @@ class LoginPageScreen extends GetWidget<LoginController> {
   /// Navigates to the homeContainerScreen when the action is triggered.
   onTapLogIn() {
     Get.toNamed(
-      AppRoutes.homeContainerScreen,
+      AppRoutes.homePage /*homeContainerScreen*/,
     );
   }
 
@@ -204,4 +233,12 @@ class LoginPageScreen extends GetWidget<LoginController> {
       AppRoutes.subscriptionScreen,
     );
   }
+
+  //Nanvigate to ForgotPassword Screen when the action is triggered.
+  // onTapForgotPasswordScreen() {
+  //   // Get.toNamed(
+  //   //   AppRoutes.ForgotPasswordScreen,
+  //   // );
+  //   Get.to(ForgotPasswordScreen);
+  // }
 }

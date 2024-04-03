@@ -3,6 +3,8 @@ import '../../core/app_export.dart';
 import 'base_button.dart';
 
 class CustomElevatedButton extends BaseButton {
+  bool isLoading;
+
   CustomElevatedButton({
     Key? key,
     this.decoration,
@@ -17,7 +19,9 @@ class CustomElevatedButton extends BaseButton {
     double? height,
     double? width,
     required String text,
+    this.isLoading = false, // Use default value here
   }) : super(
+          key: key,
           text: text,
           onPressed: onPressed,
           buttonStyle: buttonStyle,
@@ -30,9 +34,7 @@ class CustomElevatedButton extends BaseButton {
         );
 
   final BoxDecoration? decoration;
-
   final Widget? leftIcon;
-
   final Widget? rightIcon;
 
   @override
@@ -58,10 +60,14 @@ class CustomElevatedButton extends BaseButton {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               leftIcon ?? const SizedBox.shrink(),
-              Text(
-                text,
-                style: buttonTextStyle ?? CustomTextStyles.titleMedium16,
-              ),
+              isLoading
+                  ? CircularProgressIndicator(
+                      color: Colors.white,
+                    )
+                  : Text(
+                      text,
+                      style: buttonTextStyle ?? CustomTextStyles.titleMedium16,
+                    ),
               rightIcon ?? const SizedBox.shrink(),
             ],
           ),

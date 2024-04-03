@@ -1,11 +1,15 @@
 import 'package:http/http.dart';
 import 'package:joel_s_application10/features/data/data/repository/contestants.dart';
+import 'package:joel_s_application10/features/data/data/repository/fanBase.dart';
 import 'package:joel_s_application10/features/data/data/repository/home.dart';
+import 'package:joel_s_application10/features/data/data/repository/profile_page_one.dart';
 import 'package:joel_s_application10/features/domain/controllers/contestants.dart';
+import 'package:joel_s_application10/features/domain/controllers/fanBase.dart';
 import 'package:joel_s_application10/features/domain/controllers/gift_zone.dart';
 import 'package:joel_s_application10/features/domain/controllers/home.dart';
 import 'package:joel_s_application10/features/domain/controllers/money_zone.dart';
 import 'package:joel_s_application10/features/domain/controllers/login_controller.dart';
+import 'package:joel_s_application10/features/domain/controllers/profile.dart';
 import 'package:joel_s_application10/features/domain/controllers/profile_page.dart';
 import 'package:joel_s_application10/features/domain/controllers/register.dart';
 import 'package:joel_s_application10/features/domain/controllers/subscription.dart';

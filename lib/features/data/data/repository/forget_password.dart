@@ -2,11 +2,11 @@
 // import 'package:joel_s_application10/features/core/utils/app_constants.dart';
 // import 'package:joel_s_application10/features/data/data/apiClient/api_client.dart';
 
-// class FanBaseRepo extends GetxService {
+// class ForgetPasswordRepo extends GetxService {
 //   final ApiClient apiClient;
-//   FanBaseRepo({required this.apiClient});
+//   ForgetPasswordRepo({required this.apiClient});
 
-//   Future<Response> getFanBaseRepo() async {
-//     return await apiClient.getData(AppConstants.FAN_BASE_URL);
+//   Future<Response> forGetPasswordRepo() async {
+//     return await apiClient.getData(AppConstants.FORGET_PASSWORD);
 //   }
 // }

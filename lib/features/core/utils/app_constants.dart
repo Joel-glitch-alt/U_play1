@@ -61,6 +61,8 @@ class AppConstants {
   static const String FETCH_TOP_MEDIA = MEDIA + "fetch-top-media/";
   static const String FETCH_TOP_VIEWS = MEDIA + "fetch-top-viewers/";
   static const String FETCH_TOP_PLAYS = MEDIA + "fetch-top-plays/";
+  static const String FORGET_PASSWORD = BASE_URL + "forgot-password/";
+  static const String UPDATE_PASSWORD = BASE_URL + "update-password/";
 
   //
   // static const String HOME = "http://10.0.2.2:8000/rewards/home/";

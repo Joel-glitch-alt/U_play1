@@ -14,6 +14,7 @@ class SubscriptionController extends GetxController {
 
   @override
   void onInit() {
+    sendPostRequest();
     super.onInit();
   }
 

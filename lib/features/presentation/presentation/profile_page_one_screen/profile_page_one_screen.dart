@@ -1,3 +1,5 @@
+import 'package:joel_s_application10/features/domain/controllers/profile.dart';
+
 import 'widgets/userprofile_item_widget.dart';
 import 'controller/profile_page_one_controller.dart';
 import 'models/userprofile_item_model.dart';
@@ -14,8 +16,8 @@ class ProfilePageOneScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ProfilePageOneController controller =
-        Get.put(ProfilePageOneController(profileRepo: onTapAngleRight));
+    // final ProfilePageOneController controller =
+    //     Get.put(ProfilePageOneController(profileRepo: onTapAngleRight));
 
     return GetBuilder<ProfilePageOneController>(
       builder: (ctrl) {
@@ -62,7 +64,7 @@ class ProfilePageOneScreen extends StatelessWidget {
                               Opacity(
                                 opacity: 0.9,
                                 child: Text(
-                                  "msg_username_nickname".tr,
+                                  "UserName/NickName",
                                   style: theme.textTheme.titleLarge,
                                 ),
                               ),
@@ -152,27 +154,53 @@ class ProfilePageOneScreen extends StatelessWidget {
   }
 
   /// Section Widget
+  // Widget _buildUserProfile() {
+  //   var ctrl;
+  //   return Obx(
+  //     () => GridView.builder(
+  //       shrinkWrap: true,
+  //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+  //         mainAxisExtent: 201.v,
+  //         crossAxisCount: 2,
+  //         mainAxisSpacing: 25.h,
+  //         crossAxisSpacing: 25.h,
+  //       ),
+  //       physics: NeverScrollableScrollPhysics(),
+  //       itemCount: ctrl.ProfilePageOneController.profilePageOneModelObj.value
+  //           .userprofileItemList.value.length,
+  //       itemBuilder: (context, index) {
+  //         var ctrl;
+  //         UserprofileItemModel model = ctrl
+  //             .profilePageOneModelObj.value.userprofileItemList.value[index];
+  //         return UserprofileItemWidget(model);
+  //       },
+  //     ),
+  //   );
+  // }
+  //////
   Widget _buildUserProfile() {
-    var ctrl;
-    return Obx(
-      () => GridView.builder(
-        shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          mainAxisExtent: 201.v,
-          crossAxisCount: 2,
-          mainAxisSpacing: 25.h,
-          crossAxisSpacing: 25.h,
-        ),
-        physics: NeverScrollableScrollPhysics(),
-        itemCount: ctrl.ProfilePageOneController.profilePageOneModelObj.value
-            .userprofileItemList.value.length,
-        itemBuilder: (context, index) {
-          var ctrl;
-          UserprofileItemModel model = ctrl
-              .profilePageOneModelObj.value.userprofileItemList.value[index];
-          return UserprofileItemWidget(model);
-        },
-      ),
+    return GetBuilder<ProfilePageOneController>(
+      builder: (ctrl) {
+        return Obx(
+          () => GridView.builder(
+            shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              mainAxisExtent: 201.v,
+              crossAxisCount: 2,
+              mainAxisSpacing: 25.h,
+              crossAxisSpacing: 25.h,
+            ),
+            physics: NeverScrollableScrollPhysics(),
+            itemCount:
+                ctrl.loadingPageModelObj.value.userprofileItemList.length,
+            itemBuilder: (context, index) {
+              UserprofileItemModel model =
+                  ctrl.loadingPageModelObj.value.userprofileItemList[index];
+              return UserprofileItemWidget(model);
+            },
+          ),
+        );
+      },
     );
   }
 }

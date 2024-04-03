@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:joel_s_application10/features/config/bindings/loadig_page.dart';
 import 'package:joel_s_application10/features/presentation/presentation/loading_page_screen/loading_page_screen.dart';
 import 'package:joel_s_application10/features/presentation/presentation/loading_page_screen/binding/loading_page_binding.dart';
 import 'package:joel_s_application10/features/presentation/presentation/get_started_introduction_screen/get_started_introduction_screen.dart';
@@ -35,7 +36,7 @@ import 'package:joel_s_application10/features/presentation/presentation/app_navi
 import 'package:get/get.dart';
 
 class AppRoutes {
-  static const String initial = '/';
+  //static const String initial = '/';
   static const String loadingPageScreen = '/loading_page_screen';
 
   static const String getStartedIntroductionScreen =
@@ -78,69 +79,70 @@ class AppRoutes {
   static const String initialRoute = '/initialRoute';
 
   static List<GetPage> pages = [
-    GetPage(
-      name: '/',
-      page: () => RegisterOtp(
-        productTypesList: [
-          {"id": 1, "label": "Artiste"},
-          {"id": 2, "label": "Judge"},
-        ],
-        isChecked: true,
-        category: '',
-      ),
-      // bindings: [
-      //   LoadingPageBinding(),
-      // ],
-    ),
+    //   GetPage(
+    //     name: '/',
+    //     page: () => RegisterOtp(
+    //       productTypesList: [
+    //         {"id": 1, "label": "Artiste"},
+    //         {"id": 2, "label": "Judge"},
+    //       ],
+    //       isChecked: true,
+    //       category: '',
+    //     ),
+    // bindings: [
+    //   LoadingPageBinding(),
+    // ],
+    // ),
     GetPage(
       name: loadingPageScreen,
       page: () => LoadingPageScreen(),
-      // bindings: [
-      //   LoadingPageBinding(),
-      // ],
+      bindings: [
+        LoadingPageBinding(),
+      ],
     ),
     GetPage(
       name: getStartedIntroductionScreen,
       page: () => GetStartedIntroductionScreen(),
-      // bindings: [
-      // GetStartedIntroductionBinding(),
-      // ],
+      bindings: [
+        GetStartedIntroductionBinding(),
+      ],
+
       ///SubscriptionScreen
     ),
     GetPage(
       name: getStartedSubscriptionScreen,
       page: () => GetStartedSubscriptionScreen(),
-      // bindings: [
-      //   GetStartedSubscriptionBinding(),
-      // ],
+      bindings: [
+        GetStartedSubscriptionBinding(),
+      ],
     ),
     GetPage(
       name: getStartedScreen,
       page: () => GetStartedScreen(),
-      // bindings: [
-      //   GetStartedBinding(),
-      // ],
+      bindings: [
+        GetStartedBinding(),
+      ],
     ),
     GetPage(
       name: signupPageScreen,
       page: () => SignupPageScreen(),
-      // bindings: [
-      //   SignupPageBinding(),
-      // ],
+      bindings: [
+        // SignupPageBinding(),
+      ],
     ),
     GetPage(
       name: loginPageScreen,
       page: () => LoginPageScreen(),
-      // bindings: [
-      //   LoginPageBinding(),
-      // ],
+      bindings: [
+        //LoginPageBinding(),
+      ],
     ),
     GetPage(
       name: profilePageOneScreen,
       page: () => ProfilePageOneScreen(),
-      // bindings: [
-      //   //ProfilePageOneBinding(),
-      // ],
+      bindings: [
+        // ProfilePageOneBinding(),
+      ],
     ),
     // GetPage(
     //   name: subscriptionScreen,
@@ -168,65 +170,65 @@ class AppRoutes {
     GetPage(
       name: votingScreen,
       page: () => VotingScreen(),
-      // bindings: [
-      //   VotingBinding(),
-      // ],
+      bindings: [
+        //VotingBinding(),
+      ],
     ),
     GetPage(
       name: profilePageScreen,
       page: () => ProfilePageScreen(),
-      // bindings: [
-      //   ProfilePageBinding(),
-      // ],
+      bindings: [
+        //ProfilePageBinding(),
+      ],
     ),
     GetPage(
       name: tabsScreen,
       page: () => TabsScreen(),
-      // bindings: [
-      //   TabsBinding(),
-      // ],
+      bindings: [
+        TabsBinding(),
+      ],
     ),
     GetPage(
       name: homeContainerScreen,
       page: () => HomeContainerScreen(),
-      // bindings: [
-      //   HomeContainerBinding(),
-      // ],
+      bindings: [
+        HomeContainerBinding(),
+      ],
     ),
     GetPage(
       name: fanbaseScreen,
       page: () => FanbaseScreen(),
-      // bindings: [
-      //   FanbaseBinding(),
-      // ],
+      bindings: [
+        FanbaseBinding(),
+      ],
     ),
     GetPage(
       name: giftScreen,
       page: () => GiftScreen(),
-      // bindings: [
-      //   GiftBinding(),
-      // ],
+      bindings: [
+        //GiftBinding(),
+      ],
     ),
     GetPage(
       name: giftAvailableRewardsScreen,
       page: () => GiftAvailableRewardsScreen(),
-      // bindings: [
-      //   GiftAvailableRewardsBinding(),
-      // ],
+      bindings: [
+        GiftAvailableRewardsBinding(),
+      ],
     ),
     GetPage(
       name: appNavigationScreen,
       page: () => AppNavigationScreen(),
-      // bindings: [
-      //   AppNavigationBinding(),
-      // ],
+      bindings: [
+        AppNavigationBinding(),
+      ],
     ),
     GetPage(
       name: initialRoute,
       page: () => LoadingPageScreen(),
-      // bindings: [
-      //   LoadingPageBinding(),
-      // ],
+      bindings: [
+        LoadingPageBinding(),
+      ],
     )
   ];
 }

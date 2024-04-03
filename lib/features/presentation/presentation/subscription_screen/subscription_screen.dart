@@ -184,6 +184,7 @@ import 'package:flutter/material.dart';
 import 'package:joel_s_application10/features/domain/controllers/subscription.dart';
 import 'package:joel_s_application10/features/core/app_export.dart';
 import 'package:get/get.dart';
+import 'package:joel_s_application10/features/presentation/presentation/home_page/home_page.dart';
 
 ///////////////////////////////////////////////////////////////////////////////////////
 ///import 'package:flutter/material.dart';
@@ -211,38 +212,97 @@ class SubscriptionScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextField(
-                controller: ctrl.phoneSubscription,
-                onChanged: onTextChanged,
-                decoration: InputDecoration(
-                  hintText: 'Enter Phone  Number',
-                  hintStyle: TextStyle(color: Colors.white),
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {},
-                // onArtistsPressed,
-                child: Text(
-                  'Artists',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: ctrl.phoneSubscription,
+                  onChanged: onTextChanged,
+                  decoration: InputDecoration(
+                    hintText: 'Enter Phone  Number',
+                    hintStyle: TextStyle(color: Colors.white),
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
                 ),
               ),
               SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {},
-                // onJudgePressed,
-                child: Text(
-                  'Judge',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Get.to()
+
+                    print('Artist');
+                  },
+                  // onJudgePressed,
+                  child: Text(
+                    'Artist',
+                    style: TextStyle(color: Colors.white, fontSize: 25),
+                  ),
                 ),
               ),
+              SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Get.to()
+                    print('Judge');
+                  },
+                  // onJudgePressed,
+                  child: Text(
+                    'Judge',
+                    style: TextStyle(color: Colors.white, fontSize: 25),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                  left: 160,
+                ),
+                child: Text(
+                  'NOTE',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                  margin: EdgeInsets.only(left: 30, right: 30),
+                  child: Text(
+                    'Subscribing as Artist cost GHc 70.00.'
+                    ' And a judge cost GHc 10,00. You  will receive a USSD prompt after this action.',
+                    style: TextStyle(color: Colors.white, fontSize: 17),
+                  )),
+              SizedBox(height: 30),
+              Container(
+                margin: EdgeInsets.only(left: 30, right: 30),
+                child: Text(
+                  'In order to participate in this contest you need to subscribe. Thank You',
+                  style: TextStyle(color: Colors.white, fontSize: 17),
+                ),
+              )
             ],
           ),
         ),
       );
     });
+  }
+
+  ///
+  onTapTxtProfilePage() {
+    Get.toNamed(
+      AppRoutes.profilePageOneScreen,
+    );
   }
 }
