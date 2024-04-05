@@ -8,14 +8,21 @@ import 'package:joel_s_application10/features/presentation/presentation/home_pag
 
 class HomeController extends GetxController {
   final HomeRepo homeRepo;
+  final HomeRepo fanbaseRepo;
+  final HomeRepo regionRepo;
   var homeModelObj = HomeModel([]).obs;
   TextEditingController textSearchCtrl = TextEditingController();
   //var totalVotes = 0.obs; // Observable variable to hold total votes
   final RxInt totalVotes = 0.obs; // Observable variable to store total votes
   final RxInt fanBase = 0.obs;
 
-  HomeController({required this.homeRepo});
-
+  HomeController({
+    required this.homeRepo,
+    required this.fanbaseRepo,
+    required this.regionRepo,
+  });
+  //List<dynamic> parseddData = [];
+  List<dynamic> artists = [];
   @override
   void onInit() {
     super.onInit();
@@ -67,12 +74,12 @@ class HomeController extends GetxController {
   }
 
   //Getting Total Votes
-  void fetchVotes() async {
+  /*void fetchVotes() async {
     try {
       final response = await Dio().get(AppConstants.VOTES);
       if (response.statusCode == 200) {
         int total = response.data['total_votes'];
-        totalVotes.value = total; // Update the observable variable
+        totalVotes.value = total;
       } else {
         // Handle error
       }
@@ -80,6 +87,7 @@ class HomeController extends GetxController {
       // Handle error
     }
   }
+  */
 
   //Getting FanBase Videos....
   void getFanBaseTrendingVideo() async {
@@ -99,6 +107,27 @@ class HomeController extends GetxController {
     } catch (e) {
       // Handle Dio errors or exceptions
       print('Error: $e');
+    }
+  }
+
+  //
+  //Getting Regions by Artist
+  Future<List<String>> getArtistsFromRegionUrl(String url) async {
+    try {
+      final dio = Dio(); // Creating an instance of Dio
+      final response = await dio.get(url);
+      if (response.statusCode == 200) {
+        final responseData = response.data; // Extracting the response data
+        // Assuming responseData is a list of objects and each object has an 'artist' field
+        List<String> artists =
+            responseData.map<String>((item) => item['artiste_name']).toList();
+        print(artists);
+        return artists; // Returning the list of artists
+      } else {
+        throw Exception('Error: ${response.statusCode}');
+      }
+    } catch (error) {
+      throw Exception('Unexpected error: $error');
     }
   }
 }

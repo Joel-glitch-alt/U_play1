@@ -55,12 +55,13 @@ class MyApp extends StatelessWidget {
         fallbackLocale: Locale('en', 'US'),
         title: 'U PLAY',
         // initialBinding: InitialBindings(),
-        initialRoute: AppRoutes.initialRoute,
+        /*initialRoute: AppRoutes.initialRoute,*/
 
         //initial,
         //initialRoute,
-        getPages: AppRoutes.pages,
-        //home: ForgotPasswordScreen(),
+        /*getPages: AppRoutes.pages*/
+        home: HomePage(),
+
         // ProfilePageOneScreen()
         // HomePage()
         //LoginPageScreen(),

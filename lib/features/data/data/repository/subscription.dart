@@ -9,7 +9,7 @@ class subRepo extends GetxService {
   subRepo({required this.apiClient});
 
   Future<Response> getSubRepo() async {
-    return await apiClient.getData(AppConstants.SUBSTRICTION_URL);
+    return await apiClient.getData(AppConstants.ROLE);
   }
 }
 // import 'package:flutter/material.dart';

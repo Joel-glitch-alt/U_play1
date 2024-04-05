@@ -14,12 +14,13 @@ class SubscriptionController extends GetxController {
 
   @override
   void onInit() {
-    sendPostRequest();
+    //sendPostRequest();
+    //phoneSubscription;
     super.onInit();
   }
 
   Future<void> sendPostRequest() async {
-    final String apiUrl = AppConstants.SUBSTRICTION_URL;
+    final String apiUrl = AppConstants.ROLE;
 
     if (phoneSubscription.text.isEmpty) {
       Get.snackbar('ERROR', 'Please fill field');
@@ -55,6 +56,12 @@ class SubscriptionController extends GetxController {
       print('Exception: $error');
       Get.snackbar('Error', 'An unexpected error occurred.');
     }
+  }
+
+  //
+  void onSubmitButtonPressed() {
+    // Call sendPostRequest() method when the submit button is pressed
+    sendPostRequest();
   }
 
   void setDefaultValues() {

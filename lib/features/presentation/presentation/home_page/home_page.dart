@@ -18,12 +18,17 @@ class HomePage extends StatelessWidget {
 
   //HomeController controller = Get.put(HomeController(HomeModel().obs, homeRepo: null));
   //final HomeController controller = Get.put(HomeController(homeRepo:));
-  final HomeController controller =
-      Get.put(HomeController(homeRepo: HomeRepo(apiClient: Get.find())));
+  final HomeController controller = Get.put(HomeController(
+    homeRepo: HomeRepo(apiClient: Get.find()),
+    fanbaseRepo: Get.find(),
+    regionRepo: Get.find(),
+  ));
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(builder: (controller) {
+      //print(controller);
+      //controller.artists
       return SafeArea(
         child: Scaffold(
           resizeToAvoidBottomInset: false,
@@ -342,114 +347,129 @@ class HomePage extends StatelessWidget {
 
   /// Section Widget
   Widget _buildForm1() {
-    return Expanded(
-      child: Container(
-        margin: EdgeInsets.only(right: 7.h),
-        decoration:
-            BoxDecoration(borderRadius: BorderRadiusStyle.roundedBorder10),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text("Regions And Reps ", style: CustomTextStyles.titleSmallGray50),
-          SizedBox(height: 3.v),
-          Container(
+    return GetBuilder<HomeController>(builder: (ctrl) {
+      return Expanded(
+        child: Container(
+          margin: EdgeInsets.only(right: 7.h),
+          decoration:
+              BoxDecoration(borderRadius: BorderRadiusStyle.roundedBorder10),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text("Regions And Reps ", style: CustomTextStyles.titleSmallGray50),
+            SizedBox(height: 3.v),
+            //
+            Container(
               padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 5.v),
               decoration: AppDecoration.gradientWhiteAToWhiteA
                   .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
               child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(height: 4.v),
-                    _buildFrameFive(
-                        regionCounter: "Region 1",
-                        arrowDown: ImageConstant.imgArrowUp),
-                    SizedBox(height: 2.v),
-                    _buildFrameThirtyNine(artistName: "lbl_artist_name2".tr),
-                    SizedBox(height: 4.v),
-                    _buildFrameThirtyNine(artistName: "lbl_artist_name2".tr),
-                    SizedBox(height: 4.v),
-                    _buildFrameThirtyNine(artistName: "lbl_artist_name2".tr),
-                    SizedBox(height: 4.v),
-                    _buildFrameThirtyNine(artistName: "lbl_artist_name2".tr),
-                    SizedBox(height: 4.v),
-                    _buildFrameThirtyNine(artistName: "lbl_artist_name2".tr),
-                    SizedBox(height: 3.v),
-                    SizedBox(
-                        height: 9.v,
-                        width: 142.h,
-                        child:
-                            Stack(alignment: Alignment.centerLeft, children: [
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              height: 8.v,
-                              width: 142.h,
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                      color:
-                                          appTheme.whiteA700.withOpacity(0.05),
-                                      width: 1.h),
-                                ),
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(height: 4.v),
+                  _buildFrameFive(
+                      regionCounter: "Region 1",
+                      arrowDown: ImageConstant.imgArrowUp),
+                  SizedBox(height: 2.v),
+                  _buildFrameThirtyNine(artistName: "lbl_artist_name2".tr),
+                  SizedBox(height: 4.v),
+                  _buildFrameThirtyNine(artistName: "lbl_artist_name2".tr),
+                  SizedBox(height: 4.v),
+                  _buildFrameThirtyNine(artistName: "lbl_artist_name2".tr),
+                  SizedBox(height: 4.v),
+                  _buildFrameThirtyNine(artistName: "lbl_artist_name2".tr),
+                  SizedBox(height: 4.v),
+                  _buildFrameThirtyNine(artistName: "lbl_artist_name2".tr),
+                  //
+                  for (String artistName in ctrl.artists)
+                    _buildFrameThirtyNine(artistName: artistName),
+                  //
+                  SizedBox(height: 3.v),
+                  SizedBox(
+                    height: 9.v,
+                    width: 142.h,
+                    child: Stack(
+                      alignment: Alignment.centerLeft,
+                      children: [
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            height: 8.v,
+                            width: 142.h,
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(
+                                    color: appTheme.whiteA700.withOpacity(0.05),
+                                    width: 1.h),
                               ),
                             ),
                           ),
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text("lbl_artist_name2".tr,
-                                  style: CustomTextStyles.bodySmallWhiteA700)),
-                          CustomImageView(
-                              imagePath: ImageConstant.imgVoteIconGray50,
-                              height: 8.v,
-                              width: 15.h,
-                              alignment: Alignment.bottomRight)
-                        ]))
-                  ])),
-          SizedBox(height: 5.v),
-          Container(
+                          //
+                        ),
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text("lbl_artist_name2".tr,
+                                style: CustomTextStyles.bodySmallWhiteA700)),
+                        CustomImageView(
+                            imagePath: ImageConstant.imgVoteIconGray50,
+                            height: 8.v,
+                            width: 15.h,
+                            alignment: Alignment.bottomRight)
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 5.v),
+            Container(
               width: 162.h,
               padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 5.v),
               decoration: AppDecoration.gradientWhiteAToWhiteA
                   .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
               child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Region 2",
-                              style:
-                                  CustomTextStyles.labelLargeWhiteA700SemiBold),
-                          Text("12 contestants".tr,
-                              style: CustomTextStyles.bodySmallWhiteA700)
-                        ]),
-                    CustomImageView(
-                        imagePath: ImageConstant.imgArrowDown,
-                        height: 15.adaptSize,
-                        width: 15.adaptSize,
-                        margin: EdgeInsets.only(bottom: 16.v))
-                  ])),
-          SizedBox(height: 5.v),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.h),
-            decoration: AppDecoration.gradientWhiteAToWhiteA
-                .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildFrameFive(
-                    regionCounter: "Region 3",
-                    arrowDown: ImageConstant.imgArrowDown),
-                SizedBox(height: 12.v),
-                Text("12 contestants".tr,
-                    style: CustomTextStyles.bodySmallWhiteA700)
-              ],
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Region 2",
+                          style: CustomTextStyles.labelLargeWhiteA700SemiBold),
+                      Text("12 contestants".tr,
+                          style: CustomTextStyles.bodySmallWhiteA700)
+                    ],
+                  ),
+                  CustomImageView(
+                      imagePath: ImageConstant.imgArrowDown,
+                      height: 15.adaptSize,
+                      width: 15.adaptSize,
+                      margin: EdgeInsets.only(bottom: 16.v))
+                ],
+              ),
             ),
-          ),
-        ]),
-      ),
-    );
+            SizedBox(height: 5.v),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10.h),
+              decoration: AppDecoration.gradientWhiteAToWhiteA
+                  .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildFrameFive(
+                      regionCounter: "Region 3",
+                      arrowDown: ImageConstant.imgArrowDown),
+                  SizedBox(height: 12.v),
+                  Text("12 contestants".tr,
+                      style: CustomTextStyles.bodySmallWhiteA700)
+                ],
+              ),
+            ),
+          ]),
+        ),
+      );
+    });
   }
 
   /// Section Widget
@@ -470,55 +490,61 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                      width: 162.h,
-                      padding: EdgeInsets.symmetric(vertical: 2.v),
-                      decoration: AppDecoration.fillAmber.copyWith(
-                          borderRadius: BorderRadiusStyle.roundedBorder10),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    width: 162.h,
+                    padding: EdgeInsets.symmetric(vertical: 2.v),
+                    decoration: AppDecoration.fillAmber.copyWith(
+                        borderRadius: BorderRadiusStyle.roundedBorder10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        CustomImageView(
+                            imagePath: ImageConstant.imgPngtreeManWea80x80,
+                            height: 80.adaptSize,
+                            width: 80.adaptSize,
+                            radius: BorderRadius.circular(40.h)),
+                        Column(
                           children: [
-                            CustomImageView(
-                                imagePath: ImageConstant.imgPngtreeManWea80x80,
-                                height: 80.adaptSize,
-                                width: 80.adaptSize,
-                                radius: BorderRadius.circular(40.h)),
-                            Column(children: [
-                              SizedBox(
-                                  height: 64.v,
-                                  width: 71.h,
-                                  child: Stack(
+                            SizedBox(
+                              height: 64.v,
+                              width: 71.h,
+                              child: Stack(
+                                alignment: Alignment.topCenter,
+                                children: [
+                                  Align(
                                       alignment: Alignment.topCenter,
-                                      children: [
-                                        Align(
-                                            alignment: Alignment.topCenter,
-                                            child: Text("My Artist",
-                                                style: theme
-                                                    .textTheme.titleSmall)),
-                                        Align(
-                                            alignment: Alignment.topCenter,
-                                            child: Padding(
-                                                padding:
-                                                    EdgeInsets.only(top: 15.v),
-                                                child: Text("Artist Name",
-                                                    style: theme
-                                                        .textTheme.bodySmall))),
-                                        Align(
-                                            alignment: Alignment.bottomCenter,
-                                            child: Padding(
-                                                padding: EdgeInsets.only(
-                                                    bottom: 15.v),
-                                                child: Text("Genre",
-                                                    style: theme
-                                                        .textTheme.bodySmall))),
-                                        Align(
-                                            alignment: Alignment.bottomCenter,
-                                            child: Text("Votes",
-                                                style:
-                                                    theme.textTheme.titleSmall))
-                                      ])),
-                              Text("8000", style: theme.textTheme.bodySmall)
-                            ])
-                          ])),
+                                      child: Text("My Artist",
+                                          style: theme.textTheme.titleSmall)),
+                                  Align(
+                                    alignment: Alignment.topCenter,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(top: 15.v),
+                                      child: Text("Artist Name",
+                                          style: theme.textTheme.bodySmall),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.bottomCenter,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(bottom: 15.v),
+                                      child: Text(
+                                        "Genre",
+                                        style: theme.textTheme.bodySmall,
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: Text("Votes",
+                                          style: theme.textTheme.titleSmall))
+                                ],
+                              ),
+                            ),
+                            Text("8000", style: theme.textTheme.bodySmall)
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                   SizedBox(height: 16.v),
                   Opacity(
                       opacity: 0.9,
@@ -585,45 +611,57 @@ class HomePage extends StatelessWidget {
   }
 
   /// Section Widget
-  // PreferredSizeWidget _buildAppBar() {
-  //   return CustomAppBar(
-  //       title: AppbarTitleSearchview(
-  //           margin: EdgeInsets.only(left: 25.h),
-  //           hintText: "search",
-  //           controller: controller.textSearchCtrl),
-  //       actions: [
-  //         AppbarTrailingIconbuttonOne(
-  //             imagePath: ImageConstant.imgUserAlt40x40,
-  //             margin: EdgeInsets.only(left: 15.h, right: 25.h),
-  //             onTap: () {
-  //               /// onTapUserAlt();
-  //             })
-  //       ]);
-  // }
+  /* PreferredSizeWidget _buildAppBar() {
+    return CustomAppBar(
+        title: AppbarTitleSearchview(
+            margin: EdgeInsets.only(left: 25.h),
+            hintText: "search",
+            controller: controller.textSearchCtrl),
+        actions: [
+          AppbarTrailingIconbuttonOne(
+            imagePath: ImageConstant.imgUserAlt40x40,
+            margin: EdgeInsets.only(left: 15.h, right: 25.h),
+            onTap: () {
+              /// onTapUserAlt();
+            },
+          )
+        ]);
+  }
+  */
 
   /// Common widget
   Widget _buildFrameThirtyNine({required String artistName}) {
     return SizedBox(
-        height: 15.v,
-        width: 142.h,
-        child: Stack(alignment: Alignment.centerLeft, children: [
+      height: 15.v,
+      width: 142.h,
+      child: Stack(
+        alignment: Alignment.centerLeft,
+        children: [
           Align(
-              alignment: Alignment.center,
-              child: Container(
-                  height: 15.v,
-                  width: 142.h,
-                  decoration: AppDecoration.outlineWhiteA,
-                  child: CustomImageView(
-                      imagePath: ImageConstant.imgVoteIconGray50,
-                      height: 13.v,
-                      width: 15.h,
-                      alignment: Alignment.topRight))),
+            alignment: Alignment.center,
+            child: Container(
+              height: 15.v,
+              width: 142.h,
+              decoration: AppDecoration.outlineWhiteA,
+              child: CustomImageView(
+                  imagePath: ImageConstant.imgVoteIconGray50,
+                  height: 13.v,
+                  width: 15.h,
+                  alignment: Alignment.topRight),
+            ),
+          ),
           Align(
-              alignment: Alignment.centerLeft,
-              child: Text(artistName,
-                  style: CustomTextStyles.bodySmallWhiteA700
-                      .copyWith(color: appTheme.whiteA700.withOpacity(0.5))))
-        ]));
+            alignment: Alignment.centerLeft,
+            child: Text(
+              artistName,
+              style: CustomTextStyles.bodySmallWhiteA700.copyWith(
+                color: appTheme.whiteA700.withOpacity(0.5),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   /// Common widget
@@ -632,18 +670,25 @@ class HomePage extends StatelessWidget {
     required String arrowDown,
   }) {
     return SizedBox(
-        width: 142.h,
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Text(regionCounter,
-              style: CustomTextStyles.labelLargeWhiteA700SemiBold
-                  .copyWith(color: appTheme.whiteA700.withOpacity(0.8))),
+      width: 142.h,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            regionCounter,
+            style: CustomTextStyles.labelLargeWhiteA700SemiBold.copyWith(
+              color: appTheme.whiteA700.withOpacity(0.8),
+            ),
+          ),
           CustomImageView(
-              imagePath: arrowDown,
-              height: 4.v,
-              width: 15.h,
-              margin: EdgeInsets.only(top: 5.v))
-        ]));
+            imagePath: arrowDown,
+            height: 4.v,
+            width: 15.h,
+            margin: EdgeInsets.only(top: 5.v),
+          )
+        ],
+      ),
+    );
   }
 
   /// Common widget
@@ -652,30 +697,39 @@ class HomePage extends StatelessWidget {
     required String search,
   }) {
     return Container(
-        padding: EdgeInsets.all(5.h),
-        decoration: AppDecoration.fillWhiteA7001
-            .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
-        child: Row(mainAxisSize: MainAxisSize.max, children: [
+      padding: EdgeInsets.all(5.h),
+      decoration: AppDecoration.fillWhiteA7001
+          .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
           CustomImageView(
               imagePath: ImageConstant.imgPic,
               height: 20.adaptSize,
               width: 20.adaptSize,
               radius: BorderRadius.circular(10.h)),
           Opacity(
-              opacity: 0.5,
-              child: Padding(
-                  padding: EdgeInsets.only(left: 10.h),
-                  child: Text(nameArtist,
-                      style: CustomTextStyles.labelLargeWhiteA700Medium
-                          .copyWith(
-                              color: appTheme.whiteA700.withOpacity(0.53))))),
+            opacity: 0.5,
+            child: Padding(
+              padding: EdgeInsets.only(left: 10.h),
+              child: Text(
+                nameArtist,
+                style: CustomTextStyles.labelLargeWhiteA700Medium.copyWith(
+                  color: appTheme.whiteA700.withOpacity(0.53),
+                ),
+              ),
+            ),
+          ),
           CustomImageView(
-              imagePath: search,
-              height: 9.adaptSize,
-              width: 9.adaptSize,
-              radius: BorderRadius.circular(1.h),
-              margin: EdgeInsets.only(left: 10.h, top: 5.v, bottom: 5.v))
-        ]));
+            imagePath: search,
+            height: 9.adaptSize,
+            width: 9.adaptSize,
+            radius: BorderRadius.circular(1.h),
+            margin: EdgeInsets.only(left: 10.h, top: 5.v, bottom: 5.v),
+          )
+        ],
+      ),
+    );
   }
 
   /// Navigates to the giftAvailableRewardsScreen when the action is triggered.

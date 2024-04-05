@@ -3,6 +3,7 @@ import 'package:joel_s_application10/features/data/data/repository/contestants.d
 import 'package:joel_s_application10/features/data/data/repository/fanBase.dart';
 import 'package:joel_s_application10/features/data/data/repository/home.dart';
 import 'package:joel_s_application10/features/data/data/repository/profile_page_one.dart';
+import 'package:joel_s_application10/features/data/data/repository/subscrition_artist_judge.dart';
 import 'package:joel_s_application10/features/domain/controllers/contestants.dart';
 import 'package:joel_s_application10/features/domain/controllers/fanBase.dart';
 import 'package:joel_s_application10/features/domain/controllers/gift_zone.dart';
@@ -13,6 +14,7 @@ import 'package:joel_s_application10/features/domain/controllers/profile.dart';
 import 'package:joel_s_application10/features/domain/controllers/profile_page.dart';
 import 'package:joel_s_application10/features/domain/controllers/register.dart';
 import 'package:joel_s_application10/features/domain/controllers/subscription.dart';
+import 'package:joel_s_application10/features/domain/controllers/subscription_artist_judge.dart';
 import 'package:joel_s_application10/features/domain/controllers/voting.dart';
 import 'package:joel_s_application10/features/core/app_export.dart';
 import 'package:joel_s_application10/features/data/data/apiClient/api_client.dart';
@@ -35,7 +37,6 @@ Future<void> init() async {
 
   //Repo
   Get.lazyPut(() => RegistereRepo(apiClient: Get.find()));
-  //Get.lazyPut(() => CommonRepo(apiClient: Get.find()));
   Get.lazyPut(() => ProfileRepo(apiClient: Get.find()));
   Get.lazyPut(() => subRepo(apiClient: Get.find()));
   Get.lazyPut(() => FanBaseRepo(apiClient: Get.find()));
@@ -47,6 +48,7 @@ Future<void> init() async {
   Get.lazyPut(() => MoneyZoneRepo(apiClient: Get.find()));
   Get.lazyPut(() => HomeRepo(apiClient: Get.find()));
   Get.lazyPut(() => ContestantsRepo(apiClient: Get.find()));
+  Get.lazyPut(() => SubArtistJudgeRepo(apiClient: Get.find()));
   //Get.lazyPut(() => VotingRepo(apiClient: Get.find()));
   // Get.lazyPut(() => SignUpPageRepo(apiClient: Get.find()));
 
@@ -61,7 +63,12 @@ Future<void> init() async {
   Get.lazyPut(() => ProfilePageController(profilePageRepo: Get.find()));
   Get.lazyPut(() => GiftZoneController(giftZoneRepo: Get.find()));
   Get.lazyPut(() => MoneyZoneController(moneyZoneRepo: Get.find()));
-  Get.lazyPut(() => HomeController(homeRepo: Get.find()));
+  Get.lazyPut(() => HomeController(
+      homeRepo: Get.find(), fanbaseRepo: Get.find(), regionRepo: Get.find()));
+  //
+  Get.lazyPut(
+      () => SubscriptionArtistJudgeController(subArtistJudgeRepo: Get.find()));
+  //
   Get.lazyPut(() => ContestantsController(
       contestantsRepo: Get.find(), endpoint: AppConstants.VOTES));
   //Get.lazyPut(() => SignUpPageRepo(registereRepo: Get.find()));

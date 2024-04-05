@@ -12,7 +12,8 @@ class AppConstants {
 
   //"http://127.0.0.1:8000/account/users/";
   //
-  static const String SUBSTRICTION_URL = "http://10.0.2.2:8000/subscriptions/";
+  static const String SUBSTRICTION_URL =
+      "http://10.0.2.2:8000/account/subscriptions/";
 
   //
   static const String REGION_URL1 = "http://10.0.2.2:8000/account/region/";
@@ -52,17 +53,30 @@ class AppConstants {
   //
   //static const String MEDIA = "http://10.0.2.2:8000/media/media/";
   static const String MEDIA = BASE_URL + "media/media/";
+  static const String FANBASE_TRENDING_VIDEOS =
+      BASE_URL + "fetch_fanbase_trending_videos/";
+  //
   static const String TRENDING_VIDEOS = MEDIA + "fetch-trending_videos/";
+  //
   static const String HIGHEST_MEDIA_VIEWS =
       MEDIA + "fetch-highest-media-views/";
+  //
   static const String HIGHEST_MEDIA_PLAYS =
       MEDIA + "fetch-highest-media-plays/";
+  //
   static const String BOOST_MEDIA = MEDIA + "boost_media/";
+  //
   static const String FETCH_TOP_MEDIA = MEDIA + "fetch-top-media/";
+  //
   static const String FETCH_TOP_VIEWS = MEDIA + "fetch-top-viewers/";
+  //
   static const String FETCH_TOP_PLAYS = MEDIA + "fetch-top-plays/";
+  //
   static const String FORGET_PASSWORD = BASE_URL + "forgot-password/";
+  //
   static const String UPDATE_PASSWORD = BASE_URL + "update-password/";
+  //
+  static const String ROLE = BASE_URL + "/account/role/";
 
   //
   // static const String HOME = "http://10.0.2.2:8000/rewards/home/";

@@ -2,6 +2,7 @@ import 'package:joel_s_application10/features/domain/controllers/login_controlle
 import 'package:joel_s_application10/features/presentation/presentation/forget_Password/forget_password.dart';
 import 'package:joel_s_application10/features/presentation/presentation/profile_page_screen/profile_page_screen.dart';
 import 'package:joel_s_application10/features/presentation/presentation/register/registerLogin.dart';
+import 'package:joel_s_application10/features/presentation/presentation/subscription_screen/subscription_screen.dart';
 
 import 'controller/login_page_controller.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,12 @@ class LoginPageScreen extends GetWidget<LoginController> {
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool isLoading = false;
+
+  get onTextChanged => null;
+
+  get onArtistsPressed => null;
+
+  get onJudgePressed => null;
 
   @override
   Widget build(BuildContext context) {
@@ -70,14 +77,14 @@ class LoginPageScreen extends GetWidget<LoginController> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text("Welcome BACK",
+                              Text("Welcome BacK",
                                   style:
                                       CustomTextStyles.headlineMediumSemiBold),
                               SizedBox(height: 11.v),
                               Text("msg_please_log_in_and".tr,
                                   style: CustomTextStyles.bodyMediumWhiteA700),
                               SizedBox(height: 29.v),
-                              Text("LOG In",
+                              Text("Enter Your Details",
                                   style: theme.textTheme.titleMedium),
                               SizedBox(height: 12.v),
                               CustomTextFormField(
@@ -169,6 +176,7 @@ class LoginPageScreen extends GetWidget<LoginController> {
                                     GestureDetector(
                                       onTap: () {
                                         onTapTxtSubscribe();
+                                        //Get.to(SubscriptionScreen);
                                       },
                                       child: Padding(
                                         padding: EdgeInsets.only(left: 5.h),
@@ -229,8 +237,15 @@ class LoginPageScreen extends GetWidget<LoginController> {
 
   /// Navigates to the subscriptionScreen when the action is triggered.
   onTapTxtSubscribe() {
-    Get.toNamed(
-      AppRoutes.subscriptionScreen,
+    // Get.toNamed(
+    //   AppRoutes.subscriptionScreen,
+    // );
+    Get.to(
+      SubscriptionScreen(
+        onTextChanged: onTextChanged ?? (String text) {},
+        onArtistsPressed: onArtistsPressed ?? () {},
+        onJudgePressed: onJudgePressed ?? () {},
+      ),
     );
   }
 

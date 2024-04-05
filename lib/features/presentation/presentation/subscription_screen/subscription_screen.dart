@@ -184,46 +184,60 @@ import 'package:flutter/material.dart';
 import 'package:joel_s_application10/features/domain/controllers/subscription.dart';
 import 'package:joel_s_application10/features/core/app_export.dart';
 import 'package:get/get.dart';
-import 'package:joel_s_application10/features/presentation/presentation/home_page/home_page.dart';
+import 'package:joel_s_application10/features/domain/controllers/subscription_artist_judge.dart';
 
-///////////////////////////////////////////////////////////////////////////////////////
 ///import 'package:flutter/material.dart';
 
 class SubscriptionScreen extends StatelessWidget {
-  final TextEditingController textEditingController;
+  final TextEditingController? textEditingController;
   final void Function(String) onTextChanged;
   final void Function() onArtistsPressed;
   final void Function() onJudgePressed;
 
   SubscriptionScreen({
-    required this.textEditingController,
+    Key? key,
+    this.textEditingController,
     required this.onTextChanged,
     required this.onArtistsPressed,
     required this.onJudgePressed,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<SubscriptionController>(builder: (ctrl) {
+    return GetBuilder<SubscriptionArtistJudgeController>(builder: (ctrl) {
       return SafeArea(
         child: Scaffold(
-          backgroundColor: appTheme.blueGray100.withOpacity(0.03),
+          // backgroundColor: appTheme.blueGray100.withOpacity(0.03),
+          backgroundColor: const Color.fromARGB(255, 30, 137, 224),
+          appBar: AppBar(
+            backgroundColor: Color.fromARGB(255, 30, 137, 224),
+            leading: IconButton(
+              onPressed: () {
+                //Get.back();
+                Navigator.pop(context);
+              },
+              icon: Icon(Icons.arrow_back),
+            ),
+          ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  controller: ctrl.phoneSubscription,
-                  onChanged: onTextChanged,
-                  decoration: InputDecoration(
-                    hintText: 'Enter Phone  Number',
-                    hintStyle: TextStyle(color: Colors.white),
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                      borderRadius: BorderRadius.circular(10),
+                child: Container(
+                  margin: EdgeInsets.only(left: 10, right: 10),
+                  child: TextField(
+                    controller: ctrl.phoneSubscription,
+                    onChanged: onTextChanged,
+                    decoration: InputDecoration(
+                      hintText: 'Enter Phone  Number',
+                      hintStyle: TextStyle(color: Colors.white),
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        // borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
                 ),
@@ -231,16 +245,23 @@ class SubscriptionScreen extends StatelessWidget {
               SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Get.to()
-
-                    print('Artist');
-                  },
-                  // onJudgePressed,
-                  child: Text(
-                    'Artist',
-                    style: TextStyle(color: Colors.white, fontSize: 25),
+                child: Container(
+                  margin: EdgeInsets.only(left: 20, right: 20),
+                  child: InkWell(
+                    onTap: () {
+                      print('Judge tapped');
+                    },
+                    child: ElevatedButton(
+                      onPressed: () {
+                        ctrl.subscribeAsArtist();
+                        // print('Artist');
+                      },
+                      // onJudgePressed,
+                      child: Text(
+                        'Artist',
+                        style: TextStyle(color: Colors.white, fontSize: 25),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -249,15 +270,23 @@ class SubscriptionScreen extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Get.to()
-                    print('Judge');
-                  },
-                  // onJudgePressed,
-                  child: Text(
-                    'Judge',
-                    style: TextStyle(color: Colors.white, fontSize: 25),
+                child: Container(
+                  margin: EdgeInsets.only(left: 20, right: 20),
+                  child: InkWell(
+                    onTap: () {
+                      // Add your navigation logic here
+                      // For example:
+                      // Get.to(YourPage());
+                    },
+                    child: ElevatedButton(
+                      onPressed: () {
+                        print('Judge tapped');
+                      },
+                      child: Text(
+                        'Judge',
+                        style: TextStyle(color: Colors.white, fontSize: 25),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -305,4 +334,18 @@ class SubscriptionScreen extends StatelessWidget {
       AppRoutes.profilePageOneScreen,
     );
   }
+  // void onTapTxtSubscribe() {
+  //   // Navigate to the SubscriptionScreen
+  //   Get.to(SubscriptionScreen(
+  //     onTextChanged: (String text) {
+  //       // Implement your logic for text changed
+  //     },
+  //     onArtistsPressed: () {
+  //       // Implement your logic for artists pressed
+  //     },
+  //     onJudgePressed: () {
+  //       // Implement your logic for judge pressed
+  //     },
+  //   ));
+  // }
 }

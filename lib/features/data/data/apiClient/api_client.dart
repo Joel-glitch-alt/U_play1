@@ -16,7 +16,7 @@ class ApiClient extends GetConnect implements GetxService {
     token = AppConstants.TOKEN;
     _mainHeaders = {
       'Content-type': 'multipart/form-data',
-      'Authorization': 'Bearer $token',
+      'Authorization': token,
     };
   }
 

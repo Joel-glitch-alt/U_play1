@@ -7,23 +7,23 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
   final ForgotPasswordRepository _forgotPasswordRepository =
       ForgotPasswordRepository();
 
   void _resetPassword() async {
-    final String email = _emailController.text.trim();
+    final String phoneNumber = _phoneNumberController.text.trim();
 
-    if (email.isNotEmpty) {
+    if (phoneNumber.isNotEmpty) {
       try {
-        await _forgotPasswordRepository.resetPassword(email);
+        await _forgotPasswordRepository.resetPassword(phoneNumber);
         // Show success message or navigate to a success screen
         // For example:
         showDialog(
           context: context,
           builder: (_) => AlertDialog(
             title: Text('Success'),
-            content: Text('Password reset email sent successfully.'),
+            content: Text('Password reset sent successfully.'),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
@@ -50,13 +50,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         );
       }
     } else {
-      // Show error message if email field is empty
+      // Show error message if phone number field is empty
       // For example:
       showDialog(
         context: context,
         builder: (_) => AlertDialog(
           title: Text('Error'),
-          content: Text('Please enter your email address.'),
+          content: Text('Please enter your phone number.'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
@@ -86,9 +86,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               Container(
                 margin: EdgeInsets.only(left: 20, right: 20),
                 child: TextField(
-                  controller: _emailController,
+                  controller: _phoneNumberController,
                   decoration: InputDecoration(
-                    labelText: 'Email',
+                    labelText: 'Phone Numberx',
                   ),
                 ),
               ),

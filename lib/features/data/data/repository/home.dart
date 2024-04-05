@@ -10,4 +10,13 @@ class HomeRepo extends GetxService {
   Future<Response> homeRepo() async {
     return await apiClient.getData(AppConstants.MEDIA);
   }
+
+  Future<Response> fanbaseRepo() async {
+    return await apiClient.getData(AppConstants.FANBASE_TRENDING_VIDEOS);
+  }
+
+  //
+  Future<Response> regionRepo() async {
+    return await apiClient.getData(AppConstants.REGION_URL1);
+  }
 }

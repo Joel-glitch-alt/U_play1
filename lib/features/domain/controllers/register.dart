@@ -23,6 +23,7 @@ class RegisterController extends GetxController {
   final Rx<LoadingPageModel> loadingPageModelObj = LoadingPageModel().obs;
   bool otpShown = false;
   RegisterController({required this.registereRepo});
+  List<dynamic> parsedData = [];
 
   @override
   void onInit() {
@@ -35,7 +36,7 @@ class RegisterController extends GetxController {
     try {
       final response = await dioInstance.get(url);
       if (response.statusCode == 200) {
-        final List<dynamic> parsedData = response.data;
+        parsedData = response.data;
       } else {
         throw Exception('Error: ${response.statusCode}');
       }
