@@ -169,24 +169,24 @@ class LoginPageScreen extends GetWidget<LoginController> {
                               SizedBox(height: 20.v),
                               Align(
                                 alignment: Alignment.centerLeft,
-                                child: Row(
-                                  children: [
-                                    Text("Subscribe as Artiste or Voter?",
-                                        style: theme.textTheme.bodyLarge),
-                                    GestureDetector(
-                                      onTap: () {
-                                        onTapTxtSubscribe();
-                                        //Get.to(SubscriptionScreen);
-                                      },
-                                      child: Padding(
-                                        padding: EdgeInsets.only(left: 5.h),
-                                        child: Text("lbl_subscribe".tr,
-                                            style: CustomTextStyles
-                                                .titleMediumPrimaryContainer),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                // child: Row(
+                                // children: [
+                                //   Text("Subscribe as Artiste or Voter?",
+                                //       style: theme.textTheme.bodyLarge),
+                                //   GestureDetector(
+                                //     onTap: () {
+                                //       onTapTxtSubscribe();
+                                //       //Get.to(SubscriptionScreen);
+                                //     },
+                                //     child: Padding(
+                                //       padding: EdgeInsets.only(left: 5.h),
+                                //       child: Text("lbl_subscribe".tr,
+                                //           style: CustomTextStyles
+                                //               .titleMediumPrimaryContainer),
+                                //     ),
+                                //   ),
+                                // ],
+                                //  ),
                               )
                             ],
                           ),

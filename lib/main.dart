@@ -48,45 +48,45 @@ class MyApp extends StatelessWidget {
     //
     return Sizer(builder: (context, orientation, deviceType) {
       return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: theme,
-        translations: AppLocalization(),
-        locale: Get.deviceLocale, //for setting localization strings
-        fallbackLocale: Locale('en', 'US'),
-        title: 'U PLAY',
-        // initialBinding: InitialBindings(),
-        /*initialRoute: AppRoutes.initialRoute,*/
+          debugShowCheckedModeBanner: false,
+          theme: theme,
+          translations: AppLocalization(),
+          locale: Get.deviceLocale, //for setting localization strings
+          fallbackLocale: Locale('en', 'US'),
+          title: 'U PLAY',
+          // initialBinding: InitialBindings(),
+          /* initialRoute: AppRoutes.initialRoute,
 
-        //initial,
-        //initialRoute,
-        /*getPages: AppRoutes.pages*/
-        home: HomePage(),
+          //initial,
+          //initialRoute,
+          getPages: AppRoutes.pages  */
+          home: ProfilePageOneScreen()
 
-        // ProfilePageOneScreen()
-        // HomePage()
-        //LoginPageScreen(),
-        // TabsScreen()
-        //GiftScreen(),
-        //ProfilePageScreen()
-        //VotingScreen()
-        //GetStartedScreen()
-        //FanbaseScreen()
+          // ProfilePageOneScreen()
+          // HomePage()
+          //LoginPageScreen(),
+          // TabsScreen()
+          //GiftScreen(),
+          //ProfilePageScreen()
+          //VotingScreen()
+          //GetStartedScreen()
+          //FanbaseScreen()
 
-        // RegisterOtp(
-        //   productTypesList: [
-        //     {"id": 1, "label": "Artiste"},
-        //     {"id": 2, "label": "Judge"},
-        //   ],
-        //   isChecked: true,
-        //   category: '',
-        // ),
+          // RegisterOtp(
+          //   productTypesList: [
+          //     {"id": 1, "label": "Artiste"},
+          //     {"id": 2, "label": "Judge"},
+          //   ],
+          //   isChecked: true,
+          //   category: '',
+          // ),
 
-        //FanbaseScreen(),
-        //ProfilePageOneScreen(),
-        //RegisterOtp(),
-        //SubscriptionScreen(),
-        //Users
-      );
+          //FanbaseScreen(),
+          //ProfilePageOneScreen(),
+          //RegisterOtp(),
+          //SubscriptionScreen(),
+          //Users
+          );
 
       //
     });

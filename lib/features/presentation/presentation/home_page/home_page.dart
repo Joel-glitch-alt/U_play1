@@ -368,9 +368,10 @@ class HomePage extends StatelessWidget {
                 children: [
                   SizedBox(height: 4.v),
                   _buildFrameFive(
-                      regionCounter: "Region 1",
-                      arrowDown: ImageConstant.imgArrowUp),
-                  SizedBox(height: 2.v),
+                    regionCounter:
+                        "Region 1", /*arrowDown: ImageConstant.imgArrowUp,*/
+                  ),
+                  /*SizedBox(height: 2.v),
                   _buildFrameThirtyNine(artistName: "lbl_artist_name2".tr),
                   SizedBox(height: 4.v),
                   _buildFrameThirtyNine(artistName: "lbl_artist_name2".tr),
@@ -379,7 +380,7 @@ class HomePage extends StatelessWidget {
                   SizedBox(height: 4.v),
                   _buildFrameThirtyNine(artistName: "lbl_artist_name2".tr),
                   SizedBox(height: 4.v),
-                  _buildFrameThirtyNine(artistName: "lbl_artist_name2".tr),
+                  _buildFrameThirtyNine(artistName: "lbl_artist_name2".tr), */
                   //
                   for (String artistName in ctrl.artists)
                     _buildFrameThirtyNine(artistName: artistName),
@@ -458,8 +459,9 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildFrameFive(
-                      regionCounter: "Region 3",
-                      arrowDown: ImageConstant.imgArrowDown),
+                    regionCounter:
+                        "Region 3", /*arrowDown: ImageConstant.imgArrowDown*/
+                  ),
                   SizedBox(height: 12.v),
                   Text("12 contestants".tr,
                       style: CustomTextStyles.bodySmallWhiteA700)
@@ -667,7 +669,7 @@ class HomePage extends StatelessWidget {
   /// Common widget
   Widget _buildFrameFive({
     required String regionCounter,
-    required String arrowDown,
+    /*required String arrowDown,*/
   }) {
     return SizedBox(
       width: 142.h,
@@ -681,7 +683,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
           CustomImageView(
-            imagePath: arrowDown,
+            /* imagePath: arrowDown,*/
             height: 4.v,
             width: 15.h,
             margin: EdgeInsets.only(top: 5.v),

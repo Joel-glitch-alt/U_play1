@@ -1,4 +1,6 @@
+import 'package:flutter/widgets.dart';
 import 'package:joel_s_application10/features/domain/controllers/profile.dart';
+import 'package:joel_s_application10/features/presentation/presentation/subscription_screen/subscription_screen.dart';
 
 import 'widgets/userprofile_item_widget.dart';
 import 'controller/profile_page_one_controller.dart';
@@ -10,9 +12,18 @@ import 'package:joel_s_application10/features/presentation/widgets/app_bar/appba
 import 'package:joel_s_application10/features/presentation/widgets/app_bar/custom_app_bar.dart';
 
 class ProfilePageOneScreen extends StatelessWidget {
-  const ProfilePageOneScreen({Key? key}) : super(key: key);
+  //
+  const ProfilePageOneScreen({
+    Key? key,
+  }) : super(key: key);
 
   get onTapAngleRight => null;
+
+  get onTextChanged => null;
+
+  get onArtistsPressed => null;
+
+  get onJudgePressed => null;
 
   @override
   Widget build(BuildContext context) {
@@ -77,14 +88,69 @@ class ProfilePageOneScreen extends StatelessWidget {
                               ),
                               Opacity(
                                 opacity: 0.75,
-                                child: Text(
-                                  "lbl_artist_judge".tr,
-                                  style:
-                                      CustomTextStyles.labelLargeLightblueA700,
+                                child: Text("Artist / Judge",
+                                    style:
+                                        // CustomTextStyles.labelLargeLightblueA700,
+                                        TextStyle(color: Colors.white)),
+                              ),
+
+                              Text("Subscribe as Artiste or Voter?",
+                                  style: theme.textTheme.bodyLarge),
+                              GestureDetector(
+                                onTap: () {
+                                  onTapTxtSubscribe();
+                                  // Get.to(SubscriptionScreen);
+                                  print("tapped");
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 5.h),
+                                  child: Text("lbl_subscribe".tr,
+                                      style: CustomTextStyles
+                                          .titleMediumPrimaryContainer),
                                 ),
                               ),
+
                               SizedBox(height: 15.v),
-                              _buildUserProfile(),
+                              // _buildUserProfile(),
+                              //TransparentIconContainers(),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      TransparentIconContainer(
+                                        icon: Icons.home,
+                                        text1: 'Home',
+                                        text2: '200',
+                                      ),
+                                      TransparentIconContainer(
+                                        icon: Icons.search,
+                                        text1: 'Search',
+                                        text2: '200',
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 20),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      TransparentIconContainer(
+                                        icon: Icons.notifications,
+                                        text1: 'Notifications',
+                                        text2: '200',
+                                      ),
+                                      TransparentIconContainer(
+                                        icon: Icons.person,
+                                        text1: 'Profile',
+                                        text2: '200',
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ),
@@ -99,6 +165,7 @@ class ProfilePageOneScreen extends StatelessWidget {
       },
     );
   }
+  //Creating Transparent Widget
 
   /// Section Widget
   Widget _buildProfileBio() {
@@ -201,6 +268,60 @@ class ProfilePageOneScreen extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  onTapTxtSubscribe() {
+    // Get.toNamed(
+    //   AppRoutes.subscriptionScreen,
+    // );
+    Get.to(
+      SubscriptionScreen(
+        onTextChanged: onTextChanged ?? (String text) {},
+        onArtistsPressed: onArtistsPressed ?? () {},
+        onJudgePressed: onJudgePressed ?? () {},
+      ),
+    );
+  }
+}
+
+class TransparentIconContainer extends StatelessWidget {
+  final IconData icon;
+  final String text1;
+  final String text2;
+  const TransparentIconContainer(
+      {Key? key, required this.icon, required this.text1, required this.text2})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 150,
+      height: 200,
+      decoration: BoxDecoration(
+        color: Colors.grey.withOpacity(0.5),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Icon(
+          icon,
+          size: 40,
+          color: Colors.blue,
+        ),
+        SizedBox(height: 8),
+        Column(
+          children: [
+            Text(
+              text1,
+              style: TextStyle(color: Colors.white),
+            ),
+            Text(
+              text2,
+              style: TextStyle(color: Colors.white),
+            )
+          ],
+        )
+      ]),
     );
   }
 }

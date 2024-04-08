@@ -227,22 +227,22 @@ class SubscriptionScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   margin: EdgeInsets.only(left: 10, right: 10),
-                  child: TextField(
-                    controller: ctrl.phoneSubscription,
-                    onChanged: onTextChanged,
-                    decoration: InputDecoration(
-                      hintText: 'Enter Phone  Number',
-                      hintStyle: TextStyle(color: Colors.white),
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        // borderSide: BorderSide(color: Colors.white),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                  ),
+                  // child: TextField(
+                  //   controller: ctrl.phoneSubscription,
+                  //   onChanged: onTextChanged,
+                  //   decoration: InputDecoration(
+                  //     hintText: 'Enter Phone  Number',
+                  //     hintStyle: TextStyle(color: Colors.white),
+                  //     fillColor: Colors.white,
+                  //     border: OutlineInputBorder(
+                  //       // borderSide: BorderSide(color: Colors.white),
+                  //       borderRadius: BorderRadius.circular(10),
+                  //     ),
+                  //   ),
+                  // ),
                 ),
               ),
-              SizedBox(height: 10),
+              // SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(

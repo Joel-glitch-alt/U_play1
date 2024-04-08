@@ -82,7 +82,7 @@ class ImageConstant {
   static String imgRetroMicrophon80x40 =
       '$imagePath/img_retro_microphon_80x40.png';
 
-  static String imgArrowUp = '$imagePath/img_arrow_up.svg';
+  /* static String imgArrowUp = '$imagePath/img_arrow_up.svg'; */
 
   static String imgVoteIconGray50 = '$imagePath/img_vote_icon_gray_50.svg';
 
