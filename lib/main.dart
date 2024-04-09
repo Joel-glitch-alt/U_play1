@@ -7,6 +7,7 @@ import 'package:joel_s_application10/features/presentation/presentation/fanbase_
 import 'package:joel_s_application10/features/presentation/presentation/forget_Password/forget_password.dart';
 import 'package:joel_s_application10/features/presentation/presentation/gift_screen/gift_screen.dart';
 import 'package:joel_s_application10/features/presentation/presentation/home_page/home_page.dart';
+import 'package:joel_s_application10/features/presentation/presentation/home_page/media.dart';
 import 'package:joel_s_application10/features/presentation/presentation/login_page_screen/login_page_screen.dart';
 import 'package:joel_s_application10/features/presentation/presentation/profile_page_one_screen/profile_page_one_screen.dart';
 import 'package:joel_s_application10/features/presentation/presentation/tabs_screen/tabs_screen.dart';
@@ -55,22 +56,31 @@ class MyApp extends StatelessWidget {
           fallbackLocale: Locale('en', 'US'),
           title: 'U PLAY',
           // initialBinding: InitialBindings(),
-          /* initialRoute: AppRoutes.initialRoute,
+
+          initialRoute: AppRoutes.initialRoute,
 
           //initial,
           //initialRoute,
-          getPages: AppRoutes.pages  */
-          home: ProfilePageOneScreen()
+          getPages: AppRoutes.pages
+          //home: LoginPageScreen(),
+
+          /*MediaPlayer(
+          videoUrl: 'https://www.youtube.com/watch?v=n1Y4HROvFME',
+        ),*/
+          //HomePage()
+          //VotingScreen()
+          //ContestantsPage()
+          //TabsScreen()
+          //GiftScreen()
+          //FanbaseScreen()
 
           // ProfilePageOneScreen()
           // HomePage()
-          //LoginPageScreen(),
-          // TabsScreen()
+
+          //
           //GiftScreen(),
           //ProfilePageScreen()
-          //VotingScreen()
           //GetStartedScreen()
-          //FanbaseScreen()
 
           // RegisterOtp(
           //   productTypesList: [
@@ -81,11 +91,10 @@ class MyApp extends StatelessWidget {
           //   category: '',
           // ),
 
-          //FanbaseScreen(),
           //ProfilePageOneScreen(),
           //RegisterOtp(),
           //SubscriptionScreen(),
-          //Users
+
           );
 
       //

@@ -134,7 +134,7 @@ class LoginPageScreen extends GetWidget<LoginController> {
                               SizedBox(height: 18.v),
                               InkWell(
                                 onTap: () {
-                                  Get.to(ForgotPasswordScreen());
+                                  Get.to(ProfilePageScreen());
                                 },
                                 child: Text(
                                   "forgot password",

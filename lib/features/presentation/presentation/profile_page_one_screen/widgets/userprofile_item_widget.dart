@@ -1,4 +1,5 @@
 import 'package:joel_s_application10/features/domain/controllers/profile.dart';
+import 'package:joel_s_application10/features/presentation/presentation/profile_page_one_screen/models/profile.dart';
 
 import '../controller/profile_page_one_controller.dart';
 import '../models/userprofile_item_model.dart';
@@ -9,13 +10,14 @@ import 'package:joel_s_application10/features/presentation/widgets/custom_icon_b
 // ignore: must_be_immutable
 class UserprofileItemWidget extends StatelessWidget {
   UserprofileItemWidget(
-    this.userprofileItemModelObj, {
+    this.userModell, {
     Key? key,
   }) : super(
           key: key,
         );
 
-  UserprofileItemModel userprofileItemModelObj;
+  ///UserprofileItemModel userprofileItemModelObj;
+  UserModell userModell;
 
   var controller = Get.find<ProfilePageOneController>();
 
@@ -38,9 +40,9 @@ class UserprofileItemWidget extends StatelessWidget {
               width: 55.adaptSize,
               padding: EdgeInsets.all(17.h),
               decoration: IconButtonStyleHelper.fillLightBlueA,
-              child: CustomImageView(
-                imagePath: userprofileItemModelObj.userIcon!.value,
-              ),
+              /* child: CustomImageView(
+                imagePath: userModell.userIcon!.value,
+              ),*/
             ),
           ),
           SizedBox(height: 28.v),
@@ -48,7 +50,7 @@ class UserprofileItemWidget extends StatelessWidget {
             opacity: 0.9,
             child: Obx(
               () => Text(
-                userprofileItemModelObj.followerCount!.value,
+                userModell.followers.toString() /*followerCount!.value,*/,
                 style: theme.textTheme.titleLarge,
               ),
             ),
@@ -57,7 +59,7 @@ class UserprofileItemWidget extends StatelessWidget {
             opacity: 0.5,
             child: Obx(
               () => Text(
-                userprofileItemModelObj.followerText!.value,
+                userModell.followers.virtual_cash /*followerText!.value*/,
                 style: CustomTextStyles.labelLargeGray50,
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:joel_s_application10/features/domain/controllers/contestants.dart';
+import 'package:joel_s_application10/features/presentation/widgets/custom_outlined_button.dart';
 
 import 'widgets/userprofile1_item_widget.dart';
 import 'controller/contestants_controller.dart';
@@ -90,7 +91,8 @@ class ContestantsPage extends StatelessWidget {
                                         SizedBox(height: 2.v),
                                         _buildUserProfile(),
                                         SizedBox(height: 22.v),
-                                        _buildForm1()
+                                        //_buildForm1()
+                                        _buildTabsGifts()
                                       ],
                                     ),
                                   ),
@@ -100,7 +102,7 @@ class ContestantsPage extends StatelessWidget {
                           ),
                         ),
                         /////
-                        ///_buildAppBar()
+                        // _buildAppBar()
                         //////
                       ],
                     ),
@@ -121,50 +123,48 @@ class ContestantsPage extends StatelessWidget {
 
   /// Section Widget
   Widget _buildForm() {
-    return GetBuilder(builder: (controller) {
-      return Container(
-        padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 6.v),
-        decoration: AppDecoration.fillGray
-            .copyWith(borderRadius: BorderRadiusStyle.roundedBorder10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: 165.h,
-              margin: EdgeInsets.only(bottom: 3.v),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomImageView(
-                      imagePath: ImageConstant.imgPngtreeManWea80x80,
-                      height: 80.adaptSize,
-                      width: 80.adaptSize,
-                      radius: BorderRadius.circular(40.h),
-                      margin: EdgeInsets.only(top: 3.v)),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("artista", style: theme.textTheme.titleSmall),
-                      Text("Artist Name", style: theme.textTheme.bodySmall),
-                      Text("Genre", style: theme.textTheme.bodySmall),
-                      Text("Votes", style: theme.textTheme.titleSmall),
-                      Text("8000", style: theme.textTheme.bodySmall)
-                    ],
-                  ),
-                ],
-              ),
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 6.v),
+      decoration: AppDecoration.fillGray
+          .copyWith(borderRadius: BorderRadiusStyle.roundedBorder10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 165.h,
+            margin: EdgeInsets.only(bottom: 3.v),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomImageView(
+                    imagePath: ImageConstant.imgPngtreeManWea80x80,
+                    height: 80.adaptSize,
+                    width: 80.adaptSize,
+                    radius: BorderRadius.circular(40.h),
+                    margin: EdgeInsets.only(top: 3.v)),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("artista", style: theme.textTheme.titleSmall),
+                    Text("Artist Name", style: theme.textTheme.bodySmall),
+                    Text("Genre", style: theme.textTheme.bodySmall),
+                    Text("Votes", style: theme.textTheme.titleSmall),
+                    Text("8000", style: theme.textTheme.bodySmall)
+                  ],
+                ),
+              ],
             ),
-            CustomImageView(
-                imagePath: ImageConstant.imgSearchAmber500,
-                height: 9.adaptSize,
-                width: 9.adaptSize,
-                radius: BorderRadius.circular(1.h),
-                margin: EdgeInsets.only(top: 67.v, right: 10.h, bottom: 10.v))
-          ],
-        ),
-      );
-    });
+          ),
+          CustomImageView(
+              imagePath: ImageConstant.imgSearchAmber500,
+              height: 9.adaptSize,
+              width: 9.adaptSize,
+              radius: BorderRadius.circular(1.h),
+              margin: EdgeInsets.only(top: 67.v, right: 10.h, bottom: 10.v))
+        ],
+      ),
+    );
   }
 
   /// Section Widget
@@ -193,75 +193,67 @@ class ContestantsPage extends StatelessWidget {
 
   /// Section Widget
   Widget _buildForm1() {
-    return GetBuilder<ContestantsController>(
-      builder: (controller) {
-        return Container(
-          decoration:
-              BoxDecoration(borderRadius: BorderRadiusStyle.roundedBorder10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("Regions and Reps",
-                  style: CustomTextStyles.titleSmallGray50),
-              SizedBox(height: 151.v),
-              _buildFrameTwentyFour(
-                  regionCounter: "Region 2",
-                  contestantsCounter: "12 Contestants"),
-              SizedBox(height: 5.v),
-              _buildFrameTwentyFour(
-                  regionCounter: "Region 3",
-                  contestantsCounter: "12 Contestants"),
-              SizedBox(height: 5.v),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 5.v),
-                decoration: AppDecoration.gradientWhiteAToWhiteA
-                    .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+    return Container(
+      decoration:
+          BoxDecoration(borderRadius: BorderRadiusStyle.roundedBorder10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Regions and Reps", style: CustomTextStyles.titleSmallGray50),
+          SizedBox(height: 151.v),
+          _buildFrameTwentyFour(
+              regionCounter: "Region 2", contestantsCounter: "12 Contestants"),
+          SizedBox(height: 5.v),
+          _buildFrameTwentyFour(
+              regionCounter: "Region 3", contestantsCounter: "12 Contestants"),
+          SizedBox(height: 5.v),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 5.v),
+            decoration: AppDecoration.gradientWhiteAToWhiteA
+                .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Region 4",
-                            style:
-                                CustomTextStyles.labelLargeWhiteA700SemiBold),
-                        CustomImageView(
-                          imagePath: ImageConstant.imgArrowDown,
-                          height: 15.adaptSize,
-                          width: 15.adaptSize,
-                          margin: EdgeInsets.only(bottom: 2.v),
-                        ),
-                      ],
-                    ),
-                    Text("12 Contestants",
-                        style: CustomTextStyles.bodySmallWhiteA700),
-                  ],
-                ),
-              ),
-              SizedBox(height: 5.v),
-              Container(
-                width: 340.h,
-                padding: EdgeInsets.symmetric(horizontal: 10.h),
-                decoration: AppDecoration.gradientWhiteAToWhiteA
-                    .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 5.v),
-                    Text("Region 5".tr,
+                    Text("Region 4",
                         style: CustomTextStyles.labelLargeWhiteA700SemiBold),
-                    SizedBox(height: 3.v),
-                    Text("12 Contestants",
-                        style: CustomTextStyles.bodySmallWhiteA700),
+                    CustomImageView(
+                      imagePath: ImageConstant.imgArrowDown,
+                      height: 15.adaptSize,
+                      width: 15.adaptSize,
+                      margin: EdgeInsets.only(bottom: 2.v),
+                    ),
                   ],
                 ),
-              ),
-            ],
+                Text("12 Contestants",
+                    style: CustomTextStyles.bodySmallWhiteA700),
+              ],
+            ),
           ),
-        );
-      },
+          SizedBox(height: 5.v),
+          Container(
+            width: 340.h,
+            padding: EdgeInsets.symmetric(horizontal: 10.h),
+            decoration: AppDecoration.gradientWhiteAToWhiteA
+                .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 5.v),
+                Text("Region 5".tr,
+                    style: CustomTextStyles.labelLargeWhiteA700SemiBold),
+                SizedBox(height: 3.v),
+                Text("12 Contestants",
+                    style: CustomTextStyles.bodySmallWhiteA700),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -335,5 +327,51 @@ class ContestantsPage extends StatelessWidget {
     Get.toNamed(
       AppRoutes.profilePageOneScreen,
     );
+  }
+
+  /// Section Widget
+  Widget _buildTabsGifts() {
+    return Container(
+        width: double.maxFinite,
+        padding: EdgeInsets.symmetric(vertical: 15.v),
+        decoration: AppDecoration.gradientGrayToWhiteA,
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          CustomImageView(
+              imagePath: ImageConstant.imgFrame46,
+              height: 40.adaptSize,
+              width: 40.adaptSize,
+              onTap: () {
+                //onTapImgImage2();
+              }),
+          CustomImageView(
+              imagePath: ImageConstant.imgSettingsBlueGray400,
+              height: 40.adaptSize,
+              width: 40.adaptSize),
+          CustomImageView(
+              imagePath: ImageConstant.imgUser,
+              height: 40.adaptSize,
+              width: 40.adaptSize,
+              onTap: () {
+                // onTapImgUser2();
+              }),
+          CustomOutlinedButton(
+              width: 140.h,
+              text: "lbl_gifts".tr,
+              leftIcon: Container(
+                  margin: EdgeInsets.only(right: 10.h),
+                  child: CustomImageView(
+                      imagePath: ImageConstant.imgThumbsupPink300,
+                      height: 20.adaptSize,
+                      width: 20.adaptSize)),
+              buttonStyle: CustomButtonStyles.outlinePink,
+              buttonTextStyle: CustomTextStyles.titleSmallPink300),
+          CustomImageView(
+              imagePath: ImageConstant.imgInfo,
+              height: 40.adaptSize,
+              width: 40.adaptSize,
+              onTap: () {
+                // onTapImgInfo3();
+              })
+        ]));
   }
 }

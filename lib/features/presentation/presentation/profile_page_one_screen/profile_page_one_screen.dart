@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:joel_s_application10/features/domain/controllers/profile.dart';
 import 'package:joel_s_application10/features/presentation/presentation/subscription_screen/subscription_screen.dart';
@@ -70,25 +71,28 @@ class ProfilePageOneScreen extends StatelessWidget {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              _buildProfileBio(),
+                              _buildProfileBio(ctrl),
                               SizedBox(height: 21.v),
                               Opacity(
                                 opacity: 0.9,
                                 child: Text(
-                                  "UserName/NickName",
+                                  /* "UserName/NickName",*/
+                                  ctrl.users[0].username ?? "",
                                   style: theme.textTheme.titleLarge,
                                 ),
                               ),
                               Opacity(
                                 opacity: 0.9,
                                 child: Text(
-                                  "msg_id_abc123456765".tr,
+                                  /*"msg_id_abc123456765".tr,*/
+                                  ctrl.users[0].id.toString(),
                                   style: CustomTextStyles.titleMediumGray5017,
                                 ),
                               ),
                               Opacity(
                                 opacity: 0.75,
-                                child: Text("Artist / Judge",
+                                child: Text(ctrl.users[0].role.toString(),
+                                    /*"Artist / Judge",*/
                                     style:
                                         // CustomTextStyles.labelLargeLightblueA700,
                                         TextStyle(color: Colors.white)),
@@ -120,15 +124,37 @@ class ProfilePageOneScreen extends StatelessWidget {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      TransparentIconContainer(
-                                        icon: Icons.home,
-                                        text1: 'Home',
-                                        text2: '200',
+                                      GestureDetector(
+                                        onTap: () {
+                                          // Handle onTap for the home icon
+                                          print("Followers icon tapped");
+                                        },
+                                        child: TransparentIconContainer(
+                                          icon: Icons.home,
+                                          text1: ctrl.users.isNotEmpty
+                                              ? ctrl.users[0].followers
+                                                  .toString()
+                                              : '',
+                                          text2: ctrl.users.isNotEmpty
+                                              ? ctrl.users[0].points.toString()
+                                              : '', // Accessing points of the first user
+                                        ),
                                       ),
-                                      TransparentIconContainer(
-                                        icon: Icons.search,
-                                        text1: 'Search',
-                                        text2: '200',
+                                      GestureDetector(
+                                        onTap: () {
+                                          // Handle onTap for the search icon
+                                          print("Colle icon tapped");
+                                        },
+                                        child: TransparentIconContainer(
+                                          icon: Icons.search,
+                                          text1: ctrl.users[0].favourites
+                                              .toString() /*'Collections'*/,
+                                          text2: ctrl.users.isNotEmpty
+                                              ? ctrl.users[0].points.toString()
+                                              : '',
+
+                                          ///*'200'*/,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -137,15 +163,35 @@ class ProfilePageOneScreen extends StatelessWidget {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      TransparentIconContainer(
-                                        icon: Icons.notifications,
-                                        text1: 'Notifications',
-                                        text2: '200',
+                                      GestureDetector(
+                                        onTap: () {
+                                          // Handle onTap for the notifications icon
+                                          print("Likes icon tapped");
+                                        },
+                                        child: TransparentIconContainer(
+                                          icon: Icons.notifications,
+                                          text1: ctrl.users.isNotEmpty
+                                              ? ctrl.users[0].mzoneCash
+                                                  .toString()
+                                              : '' /*'Likes'*/,
+                                          text2: ctrl.users.isNotEmpty
+                                              ? ctrl.users[0].points.toString()
+                                              : '', //
+                                        ),
                                       ),
-                                      TransparentIconContainer(
-                                        icon: Icons.person,
-                                        text1: 'Profile',
-                                        text2: '200',
+                                      GestureDetector(
+                                        onTap: () {
+                                          // Handle onTap for the profile icon
+                                          print("Points icon tapped");
+                                        },
+                                        child: TransparentIconContainer(
+                                          icon: Icons.person,
+                                          text1: ctrl.users[0].virtualCash
+                                              .toString(),
+                                          text2: ctrl.users.isNotEmpty
+                                              ? ctrl.users[0].points.toString()
+                                              : '',
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -168,7 +214,7 @@ class ProfilePageOneScreen extends StatelessWidget {
   //Creating Transparent Widget
 
   /// Section Widget
-  Widget _buildProfileBio() {
+  Widget _buildProfileBio(ctrl) {
     return SingleChildScrollView(
       child: SizedBox(
         height: 193.v,
@@ -220,31 +266,6 @@ class ProfilePageOneScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
-  // Widget _buildUserProfile() {
-  //   var ctrl;
-  //   return Obx(
-  //     () => GridView.builder(
-  //       shrinkWrap: true,
-  //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-  //         mainAxisExtent: 201.v,
-  //         crossAxisCount: 2,
-  //         mainAxisSpacing: 25.h,
-  //         crossAxisSpacing: 25.h,
-  //       ),
-  //       physics: NeverScrollableScrollPhysics(),
-  //       itemCount: ctrl.ProfilePageOneController.profilePageOneModelObj.value
-  //           .userprofileItemList.value.length,
-  //       itemBuilder: (context, index) {
-  //         var ctrl;
-  //         UserprofileItemModel model = ctrl
-  //             .profilePageOneModelObj.value.userprofileItemList.value[index];
-  //         return UserprofileItemWidget(model);
-  //       },
-  //     ),
-  //   );
-  // }
-  //////
   Widget _buildUserProfile() {
     return GetBuilder<ProfilePageOneController>(
       builder: (ctrl) {
@@ -258,12 +279,20 @@ class ProfilePageOneScreen extends StatelessWidget {
               crossAxisSpacing: 25.h,
             ),
             physics: NeverScrollableScrollPhysics(),
-            itemCount:
-                ctrl.loadingPageModelObj.value.userprofileItemList.length,
+            itemCount: ctrl.users.length,
             itemBuilder: (context, index) {
-              UserprofileItemModel model =
-                  ctrl.loadingPageModelObj.value.userprofileItemList[index];
-              return UserprofileItemWidget(model);
+              final user = ctrl.users[index];
+              // Convert UserModell to UserprofileItemModel
+              final userProfileItemModel = userModell(
+                // Assuming these properties exist in UserprofileItemModel
+                // userIcon: user.profileImage, // Replace with appropriate property
+                followerCount:
+                    user.followers.length.toString(), // Example conversion
+                followerText: user.role.name,
+                username: user.username,
+                role: user.role,
+              );
+              return UserprofileItemWidget(userProfileItemModel);
             },
           ),
         );

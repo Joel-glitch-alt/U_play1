@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:joel_s_application10/features/domain/controllers/register.dart';
+import 'package:joel_s_application10/features/presentation/presentation/home_page/home_page.dart';
+import 'package:joel_s_application10/features/presentation/presentation/home_page/media.dart';
 import 'package:joel_s_application10/features/presentation/presentation/login_page_screen/login_page_screen.dart';
 import 'package:joel_s_application10/features/config/routes/app_routes.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
@@ -48,7 +50,8 @@ class RegisterOtp extends StatelessWidget {
             width: double.maxFinite,
             padding: EdgeInsets.all(26),
             //
-            decoration: BoxDecoration(color: Color.fromARGB(255, 29, 153, 255)),
+
+            decoration: BoxDecoration(color: Color(0xFF1A2246)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -57,7 +60,7 @@ class RegisterOtp extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 55, 15, 46)),
+                      color: Colors.white),
                 ),
 
                 SizedBox(
@@ -70,7 +73,10 @@ class RegisterOtp extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25),
                     ),
-                    prefixIcon: Icon(Icons.phone_android),
+                    prefixIcon: Icon(
+                      Icons.phone_android,
+                      color: Colors.white,
+                    ),
                     labelText: 'First Name',
                     hintText: 'Enter your first name',
                     labelStyle: TextStyle(color: Colors.white),
@@ -87,7 +93,10 @@ class RegisterOtp extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25),
                     ),
-                    prefixIcon: Icon(Icons.phone_android),
+                    prefixIcon: Icon(
+                      Icons.phone_android,
+                      color: Colors.white,
+                    ),
                     labelText: 'Last Name',
                     hintText: 'Enter your last name',
                     labelStyle: TextStyle(color: Colors.white),
@@ -104,7 +113,10 @@ class RegisterOtp extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25),
                     ),
-                    prefixIcon: Icon(Icons.phone_android),
+                    prefixIcon: Icon(
+                      Icons.phone_android,
+                      color: Colors.white,
+                    ),
                     labelText: 'User Name',
                     hintText: 'Enter your user name',
                     labelStyle: TextStyle(color: Colors.white),
@@ -122,7 +134,10 @@ class RegisterOtp extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25),
                     ),
-                    prefixIcon: Icon(Icons.phone_android),
+                    prefixIcon: Icon(
+                      Icons.phone_android,
+                      color: Colors.white,
+                    ),
                     labelText: 'Email',
                     hintText: 'Enter your email',
                     labelStyle: TextStyle(color: Colors.white),
@@ -141,7 +156,10 @@ class RegisterOtp extends StatelessWidget {
                       //borderSide: BorderSide(color: Colors.white),
                       borderRadius: BorderRadius.circular(25),
                     ),
-                    prefixIcon: Icon(Icons.phone_android),
+                    prefixIcon: Icon(
+                      Icons.phone_android,
+                      color: Colors.white,
+                    ),
                     labelText: 'Mobile Number',
                     hintText: 'Enter your mobile number',
                     labelStyle: TextStyle(color: Colors.white),
@@ -157,7 +175,10 @@ class RegisterOtp extends StatelessWidget {
                   obscureText: true,
                   decoration: InputDecoration(
                     hintText: 'Password',
-                    prefixIcon: Icon(Icons.password),
+                    prefixIcon: Icon(
+                      Icons.password,
+                      color: Colors.white,
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(25),
                     ),
@@ -186,7 +207,7 @@ class RegisterOtp extends StatelessWidget {
                 ),
                 FormHelper.dropDownWidget(
                   context,
-                  "Select Role",
+                  "Select Rolefff",
                   "",
                   //selectedValue.toString(),
                   //
@@ -202,7 +223,7 @@ class RegisterOtp extends StatelessWidget {
                     }
                     return null;
                   },
-                  borderColor: Theme.of(context).primaryColor,
+                  borderColor: Colors.white /*Theme.of(context).primaryColor*/,
                   borderFocusColor: Theme.of(context).primaryColor,
                   borderRadius: 10,
                   optionValue: "id",
@@ -215,27 +236,27 @@ class RegisterOtp extends StatelessWidget {
 
                 SizedBox(height: 10),
                 FormHelper.dropDownWidget(
-                  context,
-                  "Select Your Region",
-                  "",
-                  // this.REGION_URL1,
-                  ctrl.parsedData, // instanstiating the passed data here...
-                  (onChangedVal) {
-                    this.regionalsId = onChangedVal;
-                    print("Selected category is:$onChangedVal");
-                  },
-                  (onValidateVal) {
-                    if (onValidateVal == null /*|| onValidateVal.isEmpty*/) {
-                      return "Please select a category";
-                    }
-                    return null;
-                  },
-                  borderColor: Theme.of(context).primaryColor,
-                  borderFocusColor: Theme.of(context).primaryColor,
-                  borderRadius: 10,
-                  /* optionValue: "id",
-                    optionLabel: "label"*/
-                ),
+                    context,
+                    "Select Your Region",
+                    "",
+                    // this.REGION_URL1,
+                    ctrl.parsedData, // instanstiating the passed data here...
+                    (onChangedVal) {
+                  this.regionalsId = onChangedVal;
+                  print("Selected category is:$onChangedVal");
+                }, (onValidateVal) {
+                  if (onValidateVal == null /*|| onValidateVal.isEmpty*/) {
+                    return "Please select a category";
+                  }
+                  return null;
+                },
+                    borderColor:
+                        Colors.white /*Theme.of(context).primaryColor*/,
+                    borderFocusColor:
+                        Colors.white /* Theme.of(context).primaryColor*/,
+                    borderRadius: 10,
+                    optionValue: "id",
+                    optionLabel: "label"),
 
                 SizedBox(
                   height: 10,
@@ -256,12 +277,17 @@ class RegisterOtp extends StatelessWidget {
                   child: Text(ctrl.otpShown ? 'Register' : 'CONFIRM'),
                   onPressed: () {
                     //print(ctrl);
-                    if (ctrl.otpShown) {
+                    /*  if (ctrl.otpShown) {
                       ctrl.sendPostRequest();
                     } else {
                       ctrl.sendOtp();
                     }
-                    //print('pressed');
+                    //print('pressed');*/
+                    Get.to(
+                      MediaPlayer(
+                        videoUrl: 'https://www.youtube.com/watch?v=n1Y4HROvFME',
+                      ), /*HomePage()*/
+                    );
                   },
                 ),
                 SizedBox(
@@ -292,7 +318,7 @@ class RegisterOtp extends StatelessWidget {
                         onTap: () {},
                         child: Text(
                           'Already having an account ?',
-                          style: TextStyle(color: Colors.black, fontSize: 15),
+                          style: TextStyle(color: Colors.grey, fontSize: 15),
                         ),
                       ),
                       SizedBox(

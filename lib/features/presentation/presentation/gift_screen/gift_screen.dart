@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:joel_s_application10/features/domain/controllers/gift_zone.dart';
-import 'package:joel_s_application10/features/domain/controllers/money_zone.dart';
 import 'package:joel_s_application10/features/core/app_export.dart';
-import 'package:joel_s_application10/features/presentation/presentation/home_page/home_page.dart';
-import 'package:joel_s_application10/features/presentation/widgets/custom_bottom_bar.dart';
 import 'package:joel_s_application10/features/domain/controllers/gift_zone.dart';
+import 'package:joel_s_application10/features/presentation/widgets/custom_bottom_bar.dart';
 
 class GiftScreen extends StatelessWidget {
   const GiftScreen({Key? key}) : super(key: key);
@@ -68,14 +66,14 @@ class GiftScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(
+          Flexible(
             child: _buildForm(
               giftZone: "Money Zone",
               pointsCounter: "Points 500",
             ),
           ),
           SizedBox(width: 8.0),
-          Expanded(
+          Flexible(
             child: _buildForm(
               giftZone: "Gift Zone",
               pointsCounter: "Points 500",

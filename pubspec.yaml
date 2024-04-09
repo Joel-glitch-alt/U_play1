@@ -15,6 +15,7 @@ dependencies:
   connectivity_plus: ^5.0.2
   shared_preferences: ^2.2.2
   snippet_coder_utils: ^1.0.15
+  video_player: ^2.8.5
   cached_network_image: ^3.3.0
   flutter_svg: ^2.0.9
   outline_gradient_button: ^2.0.1+1
