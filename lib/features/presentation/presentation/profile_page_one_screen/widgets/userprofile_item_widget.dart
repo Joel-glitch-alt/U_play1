@@ -59,7 +59,7 @@ class UserprofileItemWidget extends StatelessWidget {
             opacity: 0.5,
             child: Obx(
               () => Text(
-                userModell.followers.virtual_cash /*followerText!.value*/,
+                userModell.favourites.toString() /*followerText!.value*/,
                 style: CustomTextStyles.labelLargeGray50,
               ),
             ),
